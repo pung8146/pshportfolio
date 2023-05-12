@@ -1,53 +1,73 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { ScrollMenu, VisibilityContext } from "react-horizontal-scrolling-menu";
-import "react-horizontal-scrolling-menu/dist/styles.css";
-
-import Gallery from "./Gallery";
-import usePreventBodyScroll from "./usePreventBodyScroll";
-
-import "../style/hideScrollbar.css";
-
-const elemPrefix = "test";
-const getId = (index) => `${elemPrefix}${index}`;
+import React from 'react';
+import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
+import 'react-horizontal-scrolling-menu/dist/styles.css';
 
 const getItems = () =>
   Array(20)
     .fill(0)
-    .map((_, ind) => ({ id: getId(ind) }));
+    .map((_, ind) => ({ id: `element-${ind}` }));
 
 function ProjectGallery() {
-  const [items] = React.useState(getItems);
-  const { disableScroll, enableScroll } = usePreventBodyScroll();
+  const [items, setItems] = React.useState(getItems);
+  const [selected, setSelected] = React.useState([]);
+  const [position, setPosition] = React.useState(0);
+
+  const isItemSelected = (id) => !!selected.find((el) => el === id);
+
+  const handleClick =
+    (id) =>
+    ({ getItemById, scrollToItem }) => {
+      const itemSelected = isItemSelected(id);
+
+      setSelected((currentSelected) =>
+        itemSelected
+          ? currentSelected.filter((el) => el !== id)
+          : currentSelected.concat(id)
+      );
+    };  
 
   return (
-    <>
-      <div className="example" style={{ paddingTop: "100px" }}>
-        <div onMouseEnter={disableScroll} onMouseLeave={enableScroll}>
-          <ScrollMenu onWheel={(apiObj, ev) => onWheel(apiObj, ev)}>
-            {items.map(({ id }) => (
-              <Gallery title={id} itemId={id} key={id} />
-            ))}
-          </ScrollMenu>
-        </div>
-      </div>
-    </>
+    <ScrollMenu direction="horizontal">
+      {items.map(({ id }) => (
+        <Card
+          itemId={id} // NOTE: itemId is required for track items
+          title={id}
+          key={id}
+          onClick={handleClick(id)}
+          selected={isItemSelected(id)}
+        />
+      ))}
+    </ScrollMenu>
   );
 }
 
-function onWheel(apiObj, ev) {
-  const isThouchpad = Math.abs(ev.deltaX) !== 0 || Math.abs(ev.deltaY) < 15;
 
-  if (isThouchpad) {
-    ev.stopPropagation();
-    return;
-  }
+function Card({ onClick, selected, title, itemId }) {
+  const visibility = React.useContext(VisibilityContext);
 
-  if (ev.deltaY < 0) {
-    apiObj.scrollNext();
-  } else if (ev.deltaY > 0) {
-    apiObj.scrollPrev();
-  }
+  return (
+    <div
+      onClick={() => onClick(visibility)}
+      style={{
+        width: '160px',
+        backgroundColor:"gold",
+        margin:"10px",
+        
+      }}
+      tabIndex={0}
+    >
+      <div className="card">
+        <div>{title}</div>
+        <div>visible: {JSON.stringify(!!visibility.isItemVisible(itemId))}</div>
+        <div>selected: {JSON.stringify(!!selected)}</div>
+      </div>
+      <div
+        style={{
+          height: '200px',
+        }}
+      />
+    </div>
+  );
 }
 
 export default ProjectGallery;

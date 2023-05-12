@@ -4,7 +4,7 @@ import ProjectGallery from "../components/ProjectGallery";
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 80vh;
+  height: 100vh;
   background-color: tomato;
   display: flex;
 `
