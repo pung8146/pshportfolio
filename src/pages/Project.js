@@ -6,13 +6,13 @@ const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
   background-color: tomato;
-  display: flex;
+  position: relative;
 `
 const Title = styled.h1`
+position: absolute;
 font-size: 60px;
 text-align: center;
 color:gold;
-margin: 30px;
 `
 
 

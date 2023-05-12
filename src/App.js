@@ -9,7 +9,7 @@ background-color: beige;
 function App() {
   return (
      <Body>
-        <Main />
+        {/* <Main /> */}
         <Project />
      </Body>
   );
