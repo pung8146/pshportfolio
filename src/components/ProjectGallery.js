@@ -1,267 +1,96 @@
-import React, { useEffect } from 'react';
-import Swiper from 'swiper';
-import 'swiper/swiper-bundle.css';
+import React from 'react';
+import {Swiper, SwiperSlide} from 'swiper/react';
+
+import 'swiper/css'
+import 'swiper/css/navigation'
+import 'swiper/css/pagination' 
+import 'swiper/css/effect-coverflow'
 import styled from 'styled-components';
 
-// Triple Slider is a simple and easy to use triple slider template (based on Swiper). Three Swipers work as one to allow you to swipe (slide) through cards with pictures and see previous and next slides. 형식으로 만들꺼야
+import { EffectCoverflow,Pagination,Navigation } from 'swiper';
 
-const Wrapper = styled.div`
-  width: 100%;
-  height: 100vh;
-  background-color: tomato;
-  position: relative;
-`
-const Title = styled.h1`
-position: absolute;
-font-size: 60px;
-text-align: center;
-color:gold;
-`
+import slide_image_1 from '../assets/images/dog.png'
+import slide_image_2 from '../assets/images/cat1.png'
+import slide_image_3 from '../assets/images/cat2.png'
+import slide_image_4 from '../assets/images/wait1.png'
+import slide_image_5 from '../assets/images/wait2.png'
 
-const TripleSlider = styled.div`
-  width: 100%;
-  height: 100%;
+const Container = styled.div`
+  width: 142rem;
+  background-color: gold;
+  padding: 4rem 1rem;
+`
+const SwiperSlideContainer = styled.div`
+  width: 37rem;
+  height: 42rem;
   position: relative;
-  .swiper-container {
+  border: 1px solid blue;
+  img{
     width: 100%;
     height: 100%;
   }
-  .swiper-slide {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    overflow: hidden;
-    .img {
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-    }
-  }
-  .swiper-pagination {
-    position: absolute;
-    left: 50%;
-    bottom: 20px;
-    transform: translateX(-50%);
-    .swiper-pagination-bullet {
-      width: 10px;
-      height: 10px;
-      background-color: #fff;
-      opacity: 0.5;
-      &:not(:last-child) {
-        margin-right: 10px;
-      }
-      &.swiper-pagination-bullet-active {
-        opacity: 1;
-      }
-    }
-  }
-  .swiper-button-prev,
-  .swiper-button-next {
-    position: absolute;
-    top: 50%;
-    left: 20px;
-    transform: translateY(-50%);
-    width: 30px;
-    height: 30px;
-    background-color: #fff;
-    border-radius: 50%;
-    z-index: 10;
-    &:after {
-      font-size: 20px;
-      color: #000;
-    }
-  }
-  .swiper-button-prev {
-    left: 20px;
-  }
-  .swiper-button-next {
-    right: 20px;
-  }
-`
+`;
 
-const TripleSliderItem = styled.div`
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-  .img {
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-  }
-`
-
-const TripleSliderPagination = styled.div`
-  position: absolute;
-  left: 50%;
-  bottom: 20px;
-  transform: translateX(-50%);
-  .swiper-pagination-bullet {
-    width: 10px;
-    height: 10px;
-    background-color: #fff;
-    opacity: 0.5;
-    &:not(:last-child) {
-      margin-right: 10px;
-    }
-    &.swiper-pagination-bullet-active {
-      opacity: 1;
-    }
-  }
-
-`
-
-const TripleSliderButton = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 20px;
-  transform: translateY(-50%);
-  width: 30px;
-  height: 30px;
-  background-color: #fff;
-  border-radius: 50%;
-  z-index: 10;
-  &:after {
-    font-size: 20px;
-    color: #000;
-  }
-  &.swiper-button-prev {
-    left: 20px;
-  }
-  &.swiper-button-next {
-    right: 20px;
-  }
-`
-
-const TripleSliderItemTitle = styled.div`
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  font-size: 20px;
-  color: #fff;
-  z-index: 10;
-`
-
-const TripleSliderItemDesc = styled.div`
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  font-size: 14px;
-  color: #fff;
-  z-index: 10;
-`
-
-const TripleSliderItemButton = styled.div`
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  font-size: 14px;
-  color: #fff;
-  z-index: 10;
-`
-
-const TripleSliderItemButtonLink = styled.a`
-  display: inline-block;
-  padding: 10px 20px;
-  border: 1px solid #fff;
-  border-radius: 20px;
-  color: #fff;
-  &:hover {
-    background-color: #fff;
-    color: #000;
-  }
-`
-
-const TripleSliderItemButtonLink2 = styled.a`
-  display: inline-block;
-  padding: 10px 20px;
-  border: 1px solid #fff;
-  border-radius: 20px;
-  color: #fff;
-  &:hover {
-    background-color: #fff;
-    color: #000;
-  }
-`
-
-const TripleSliderItemButtonLink3 = styled.a`
-  display: inline-block;
-  padding: 10px 20px;
-  border: 1px solid #fff;
-  border-radius: 20px;
-  color: #fff;
-  &:hover {
-    background-color: #fff;
-    color: #000;
-  }
-`
-
-const TripleSliderItemButtonLink4 = styled.a`
-  display: inline-block;
-  padding: 10px 20px;
-  border: 1px solid #fff;
-  border-radius: 20px;
-  color: #fff;
-  &:hover {
-    background-color: #fff;
-    color: #000;
-  }
-`
-
-
-export default function ProjectGallery() {
+const ProjectGallery = () => {
   return (
-    <Wrapper>
-      <Title>Project Gallery</Title>
-      <TripleSlider>
-        <TripleSliderItem>
-        <div className="swiper-container">
-          <div className="swiper-wrapper">
-            <div className="swiper-slide">
-              <div className="img" style={{backgroundColor:"red"}}></div>
-              <TripleSliderItemTitle>Project 1</TripleSliderItemTitle>
-              <TripleSliderItemDesc>Project 1 Description</TripleSliderItemDesc>
-              <TripleSliderItemButton>
-                <TripleSliderItemButtonLink>View Project</TripleSliderItemButtonLink>
-              </TripleSliderItemButton>
-            </div>
-            <div className="swiper-slide">
-              <div className="img" style={{backgroundColor:"blue"}}></div>
-              <TripleSliderItemTitle>Project 2</TripleSliderItemTitle>
-              <TripleSliderItemDesc>Project 2 Description</TripleSliderItemDesc>
-              <TripleSliderItemButton>
-                <TripleSliderItemButtonLink2>View Project</TripleSliderItemButtonLink2>
-              </TripleSliderItemButton>
-            </div>
-            <div className="swiper-slide">
-              <div className="img" style={{backgroundColor:"yellow"}}></div>
-              <TripleSliderItemTitle>Project 3</TripleSliderItemTitle>
-              <TripleSliderItemDesc>Project 3 Description</TripleSliderItemDesc>
-              <TripleSliderItemButton>
-                <TripleSliderItemButtonLink3>View Project</TripleSliderItemButtonLink3>
-              </TripleSliderItemButton>
-            </div>
-            <div className="swiper-slide">
-              <div className="img" style={{backgroundColor:"green"}}></div>
-              <TripleSliderItemTitle>Project 4</TripleSliderItemTitle>
-              <TripleSliderItemDesc>Project 4 Description</TripleSliderItemDesc>
-              <TripleSliderItemButton>
-                <TripleSliderItemButtonLink4>View Project</TripleSliderItemButtonLink4>
-              </TripleSliderItemButton>
-            </div>
-          </div>
-          <TripleSliderButton className="swiper-button-prev"></TripleSliderButton>
-          <TripleSliderButton className="swiper-button-next"></TripleSliderButton>
-          <TripleSliderPagination className="swiper-pagination"></TripleSliderPagination>
+    <Container className='container'>
+      <Swiper 
+      effect={'coverflow'}
+      grabCursor={ true}
+      centeredSlides={ true}
+      loop={true}
+      slidesPerView={'auto'}
+      coverflowEffect={{
+        rotate: 0,
+        stretch: 0,
+        depth: 100,
+        modifier: 2.5,
+      }}
+      modules={{EffectCoverflow,Pagination,Navigation}}
+      pagination={{el:'.swiper-pagination',clickable:true}}
+      navigation={{nextEl:'.swiper-button-next',prevEl:'.swiper-button-prev',clickable:true}}
+      >
+        <SwiperSlide>
+          <SwiperSlideContainer>
+            <img src={slide_image_1} alt='dog' />
+          </SwiperSlideContainer>
+        </SwiperSlide>
+      
+        <SwiperSlide>
+          <SwiperSlideContainer>
+            <img src={slide_image_2} alt='dog' />
+          </SwiperSlideContainer>
+        </SwiperSlide>
+        
+        <SwiperSlide>
+          <SwiperSlideContainer>
+            <img src={slide_image_3} alt='dog' />
+          </SwiperSlideContainer>
+        </SwiperSlide>
+        
+        <SwiperSlide>
+          <SwiperSlideContainer>
+            <img src={slide_image_4} alt='dog' />
+          </SwiperSlideContainer>
+        </SwiperSlide>
+
+        <SwiperSlide>
+          <SwiperSlideContainer>
+            <img src={slide_image_5} alt='dog' />
+          </SwiperSlideContainer>
+        </SwiperSlide>
+      <div className='slide-controlr' style={{position:"relative",bottom:'1rem',display:'flex',alignItems:'center',justifyContent:'center'}}>
+        <div className='swiper-button-prev slider-arrow'>
+          <ion-icon name="arrow-back-outline"></ion-icon>
         </div>
-        </TripleSliderItem>
-      </TripleSlider>
-    </Wrapper>
-  )
-}
+        <div className='swiper-button-next slider-arrow'>
+          <ion-icon name="arrow-forwad-outline"></ion-icon>
+        </div>
+        <div className='swiper-pagination'></div>
+      </div>
+      </Swiper>
+    </Container>
+  );
+};
 
-
-
-
+export default ProjectGallery;

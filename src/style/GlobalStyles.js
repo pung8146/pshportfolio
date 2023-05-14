@@ -29,6 +29,13 @@ const GlobalStyles = createGlobalStyle`
         background: transparent;
         cursor: pointer;
     }
+    .swiper-slide{
+        width: 37rem;
+        height: 42rem;
+        position: relative;
+        overflow: hidden;
+    }
 `;
  
+
 export default GlobalStyles;
