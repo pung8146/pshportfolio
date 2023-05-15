@@ -1,43 +1,63 @@
-import React from "react";
-import styled from "styled-components";
-import Card from "../components/Card";
+import React from 'react';
+import { motion } from 'framer-motion';
+import styled from 'styled-components';
 
 const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
-  background-color: #232123;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; /* 중앙 정렬 */
-`
-const Title = styled.h1`
-font-size: 60px;
-text-align: center;
-color:gold;
-margin: 30px;
-`
-const IntroText = styled.div`
-    position: absolute;
-    left:20%;
-    bottom:20%;
-    article{
-      color:white;
-      font-size:20px ;
-    }
+  background-color: beige;
 `
 
-function Main() {
+
+const StyledButton = styled(motion.button)`
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+  background-color: #ff4400;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0px 4px 0px 0px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    background-color: #ff6600;
+  }
+
+  &:active {
+    background-color: #ff3300;
+    box-shadow: none;
+    transform: translateY(4px);
+  }
+`;
+
+const buttonVariants = {
+  hover: {
+    scale: 1.05,
+    transition: {
+      duration: 0.3,
+      yoyo: Infinity,
+    },
+  },
+};
+
+const Button = ({ onClick }) => {
   return (
-     <Wrapper>
-      <Title>FrontEnd Develop</Title>
-      <Card/>
-      <Title>PSH</Title>
-        <IntroText>
-            <article>I like to craft solid and scalable frontend<br/> products with great user experiences.</article>
-        </IntroText>
-     </Wrapper>
+    <Wrapper>
+      <h1>Main</h1>
+    <StyledButton
+      onClick={onClick}
+      whileHover="hover"
+      variants={buttonVariants}
+    >
+        GAME START
+    </StyledButton>
+    </Wrapper>
+    
   );
-}
+};
 
-export default Main;
+export default Button;

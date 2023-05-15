@@ -8,11 +8,11 @@ import 'swiper/css/navigation';
 
 import { EffectCoverflow, Pagination, Navigation } from 'swiper';
 
-import slide_image_1 from '../assets/images/dog.png';
-import slide_image_2 from '../assets/images/cat1.png';
-import slide_image_3 from '../assets/images/cat2.png';
-import slide_image_4 from '../assets/images/dog.png';
-import slide_image_5 from '../assets/images/wait1.png';
+// import slide_image_1 from '../assets/images/dog.png';
+// import slide_image_2 from '../assets/images/cat1.png';
+// import slide_image_3 from '../assets/images/cat2.png';
+// import slide_image_4 from '../assets/images/dog.png';
+// import slide_image_5 from '../assets/images/wait1.png';
 
 function ProjectGallery() {
   return (
@@ -38,7 +38,7 @@ function ProjectGallery() {
         modules={[EffectCoverflow, Pagination, Navigation]}
         className="swiper_container"
       >
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <img src={slide_image_1} alt="slide_image" />
         </SwiperSlide>
         <SwiperSlide>
@@ -52,7 +52,7 @@ function ProjectGallery() {
         </SwiperSlide>
         <SwiperSlide>
           <img src={slide_image_5} alt="slide_image" />
-        </SwiperSlide>
+        </SwiperSlide> */}
 
 
         <div className="slider-controler">

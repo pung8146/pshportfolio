@@ -20,7 +20,7 @@ function Project() {
   return (
      <Wrapper>
       <Title>Project</Title>
-      <ProjectGallery />
+      {/* <ProjectGallery /> */}
      </Wrapper>
   );
 }

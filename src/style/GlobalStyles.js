@@ -1,6 +1,7 @@
 import { createGlobalStyle } from "styled-components";
  
 const GlobalStyles = createGlobalStyle`
+ @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
     a{
         text-decoration: none;
         color: inherit;
@@ -18,7 +19,8 @@ const GlobalStyles = createGlobalStyle`
     }
     body{
         line-height: 1;
-        font-family: 'Noto Sans KR', sans-serif;
+        font-family: 'Press Start 2P', cursive;
+        /* font-family: 'Noto Sans KR', sans-serif; */
         background-color: #F6F9F0;
     }
     ol, ul{
