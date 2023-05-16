@@ -2,8 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import styled, { keyframes } from 'styled-components';
 import Moutin from '../assets/images/Background/Moutin.png'
-import CharacterGif from '../assets/images/Me/MeGif.gif'
 
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+
+import Character from '../components/Character';
+const Wrapper = styled.div`
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+`;
 // Keyframes for the animation
 const scrollBackground = keyframes`
   0% {
@@ -12,20 +24,6 @@ const scrollBackground = keyframes`
   100% {
     transform: translateX(500%);
   }
-`;
-
-
-const Wrapper = styled.div`
-  width: 100%;
-  height: 100vh;
-  background-image: url(${Moutin});
-  background-repeat: repeat-x;
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  position: relative;
 `;
 
 const Background1 = styled.div`
@@ -58,12 +56,11 @@ const Background3 = styled.div`
 `;
 
 const Background = styled.div`
-  width: 200%;
+  width: 100%;
   height: 100%;
   background-image: url(${Moutin});
   background-repeat: repeat-x;
   background-size: cover;
-
   animation: scrollBackground 10s linear infinite;
   
   @keyframes scrollBackground {
@@ -76,86 +73,80 @@ const Background = styled.div`
   }
 `;
 
-const Character = styled.div`
-  width: 300px;
-  height: 300px;
-  background-image: url(${CharacterGif});
-  background-size: cover;
-  position: absolute;
-  bottom: 5%;
-  left: 10%;
-`;
 
-const StyledButton = styled(motion.button)`
-  display: inline-block;
-  padding: 12px 24px;
-  font-size: 16px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #fff;
-  background: linear-gradient(to right, #ff4400, #ff6600);
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  box-shadow: 0px 4px 0px 0px rgba(0, 0, 0, 0.2);
-
+const StartButton = styled(motion.button)`
+position: absolute;
+font-family: 'VT323', cursive;
+p{
+  font-size: 4rem;
+  font-weight: 800px;
+  background: #FFE226;
+  background: linear-gradient(to bottom, #FFE226 32%, #FF9A03 50%, #CF2525 68%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+  span {
+    font-size: 8rem;
+    background: #CFCFCF;
+    background: linear-gradient(to bottom, #CFCFCF 50%, #0008FF 50%, #CF0068 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  /* Add the glowing effect on hover */
   &:hover {
-    transform: translateY(-2px);
-    color: gold;
     transition: all 0.3s ease;
+    text-shadow: 0 0 10px #cf2525, 0 0 40px #cf2525, 0 0 80px #cf2525;
   }
 
-  &:active {
-    transform: translateY(2px);
-  }
 `;
 
-const buttonVariants = {
-  hover: {
-    scale: 1.05,
-    transition: {
-      duration: 0.3,
-      yoyo: Infinity,
-    },
-  },
+const textVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
 };
 
-const Button = ({ onClick }) => {
-  const [background, setBackground] = useState('#ff4400');
+const Main = () => {
+  const [isScrolling, setIsScrolling] = useState(false);
 
   useEffect(() => {
-    const colors = ['#ff4400', '#ff8800', '#ffa500', '#ffcc00'];
-    let i = 0;
+    const onScroll = () => {
+      if (window.scrollY > 100) { // Change 100 to the scroll position you want to trigger the animation
+        setIsScrolling(true);
+      } else {
+        setIsScrolling(false);
+      }
+    };
 
-    const interval = setInterval(() => {
-      setBackground(colors[i]);
-      i = (i + 1) % colors.length;
-    }, 300); // 0.5초마다 배경색 변경
+    window.addEventListener('scroll', onScroll);
 
     return () => {
-      clearInterval(interval);
+      window.removeEventListener('scroll', onScroll);
     };
   }, []);
 
   return (
     <Wrapper>
-      <Background></Background>
-      <Background1 />
-      <Background1 />
-      <Background2 />
-      <Background3 />
-      <StyledButton
-        onClick={onClick}
-        whileHover="hover"
-        variants={buttonVariants}
-        style={{ background }}
-      >
-        GAME START
-      </StyledButton>
-      <Character />
+      <StartButton>
+        <motion.p
+          variants={textVariants}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+        >
+          CLICK or SCROLL
+        </motion.p>
+        <motion.span
+          variants={textVariants}
+          initial="hidden"
+          animate="visible"
+          transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+        >
+          START
+        </motion.span>
+      </StartButton>
+      <Character isScrolling={isScrolling} />
     </Wrapper>
   );
 };
 
-export default Button;
+export default Main;
