@@ -11,11 +11,7 @@ import Hire from "./pages/Hire";
 
 const Body = styled.div`
   background-color: beige;
-
 `
-
-
-
 const pageVariants = {
   initial: {
     opacity: 0,
