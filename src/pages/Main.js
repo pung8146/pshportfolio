@@ -1,7 +1,7 @@
 import React, { useEffect, useState,useRef } from 'react';
 import { motion } from 'framer-motion';
 import styled, { keyframes } from 'styled-components';
-import { Link, animateScroll as scroll } from "react-scroll";
+import { Link } from 'react-scroll';
 
 // img
 import BackgroundImg1 from '../assets/images/Background/OakWood/background_layer_1.png'
@@ -54,7 +54,6 @@ position: absolute;
 font-family: 'VT323', cursive;
 p{
   font-size: 4rem;
-  font-weight: 800px;
   background: #FFE226;
   background: linear-gradient(to bottom, #FFE226 32%, #FF9A03 50%, #CF2525 68%);
   -webkit-background-clip: text;

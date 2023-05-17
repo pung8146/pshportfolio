@@ -69,7 +69,7 @@ function ProjectPage() {
 
 
   return (
-     <Wrapper>
+     <Wrapper id="projectPage">
       <ProjectTitle>
         <img src={ProjectTitleImg} alt="ProjectTitleImg"/>
       </ProjectTitle>
