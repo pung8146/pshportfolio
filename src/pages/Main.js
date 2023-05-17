@@ -1,79 +1,55 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import styled, { keyframes } from 'styled-components';
-import Moutin from '../assets/images/Background/Moutin.png'
-
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+
+
+// img
+import BackgroundImg1 from '../assets/images/Background/OakWood/background_layer_1.png'
+import BackgroundImg2 from '../assets/images/Background/OakWood/background_layer_2.png'
+import BackgroundImg3 from '../assets/images/Background/OakWood/background_layer_3.png'
+
 
 import Character from '../components/Character';
 const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
-  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   position: relative;
 `;
-// Keyframes for the animation
-const scrollBackground = keyframes`
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(500%);
-  }
+
+const slide = keyframes`
+  0% { background-position: 0 0; }
+  100% { background-position: -100% 0; }
 `;
 
-const Background1 = styled.div`
-  width: 30%;
-  height: 80vh;
+const BackgroundLayer1 = styled.div`
   position: absolute;
-  bottom:10%;
-  background-color: gold;
-  animation: ${scrollBackground} 10s linear infinite; // Adjust duration as needed
-`;
-
-const Background2 = styled.div`
-  width: 20%;
-  height: 60vh;
-  position: absolute;
-  bottom:20%;
-  left:30%;
-  background-color: yellow;
-  animation: ${scrollBackground} 3s linear infinite; // Adjust duration as needed
-`;
-
-const Background3 = styled.div`
-  width: 10%;
-  height: 40vh;
-  position: absolute;
-  bottom:30%;
-  left:10%;
-  background-color: orange;
-  animation: ${scrollBackground} 3s linear infinite; // Adjust duration as needed
-`;
-
-const Background = styled.div`
-  width: 100%;
+  top: 0;
+  left: 0;
+  width: 200%; // make the width 200% to fill the gap when it moves
   height: 100%;
-  background-image: url(${Moutin});
-  background-repeat: repeat-x;
-  background-size: cover;
-  animation: scrollBackground 10s linear infinite;
-  
-  @keyframes scrollBackground {
-    0% {
-      transform: translateX(0%);
-    }
-    100% {
-      transform: translateX(-100%);
-    }
-  }
+  background-image: url(${BackgroundImg1});
+  background-size: 50% 100%; // set the size of the image to 50% of the div, so it will repeat
+  background-repeat: repeat-x; // repeat the image in the x direction
+  z-index: -3;
+  animation: ${slide} 30s linear infinite;
 `;
 
+const BackgroundLayer2 = styled(BackgroundLayer1)`
+  background-image: url(${BackgroundImg2});
+  z-index: -2;
+  animation: ${slide} 20s linear infinite;
+`;
 
+const BackgroundLayer3 = styled(BackgroundLayer1)`
+  background-image: url(${BackgroundImg3});
+  z-index: -1;
+  animation: ${slide} 10s linear infinite;
+`;
 const StartButton = styled(motion.button)`
 position: absolute;
 font-family: 'VT323', cursive;
@@ -126,6 +102,10 @@ const Main = () => {
 
   return (
     <Wrapper>
+      <BackgroundLayer1 src={BackgroundImg1} alt="Background layer 1" />
+      <BackgroundLayer2 src={BackgroundImg2} alt="Background layer 2" />
+      <BackgroundLayer3 src={BackgroundImg3} alt="Background layer 3" />
+
       <StartButton>
         <motion.p
           variants={textVariants}

@@ -11,7 +11,6 @@ const Wrapper = styled.div`
 const Hire = () => {
     return (
         <Wrapper>
-          <h1>hire</h1>
         </Wrapper>
     );
 };

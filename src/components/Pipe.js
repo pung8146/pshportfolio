@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import PipeImg from '../assets/images/Object/Pipe.png'
 
 const Pipe = styled.div`
-  width: 30%;
+  width: 20%;
   height: 10%;
   background-image: url(${PipeImg});
   background-size: 100% 100%;
