@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import styled, { keyframes } from 'styled-components';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 
 // img
