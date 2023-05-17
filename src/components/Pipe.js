@@ -9,7 +9,7 @@ const Pipe = styled.div`
   position: absolute;
   bottom: 0;
   left: 50%;
-  z-index: 2;
+  z-index: 12;
   transform: translateX(-50%);
   animation: ${props => props.isScrolling ? 'rise 2s linear forwards' : 'none'};
   

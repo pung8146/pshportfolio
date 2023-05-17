@@ -11,7 +11,7 @@ const ProjectStyled = styled.div`
   width:31%;
   height: 100%;
   color:Black;
-  /* background: url(${RandomBoxImg}) no-repeat center; */
+  background: url(${RandomBoxImg}) no-repeat center;
   background-color: green;
   visibility: ${props => props.visible ? 'visible' : 'hidden'};
   .ProjectLogo{
@@ -28,7 +28,6 @@ const ProjectStyled = styled.div`
     font-size: 16px;
     padding: 5px;
   }
-
 `;
 
 const ProjectLeftBox = styled.div`
@@ -85,7 +84,7 @@ function Project({ bgColor, onClick, visible, projectInfo }) {
           {projectInfo.githubUrl && (
             <li>
               <a href={projectInfo.githubUrl} target="_blank" rel="noreferrer" alt="gitHub">
-                <img src={GithubImg}/>
+                <img src={GithubImg} alt="깃헙"/>
               </a>
             </li>
           )}

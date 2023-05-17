@@ -6,7 +6,7 @@ import Pipe from "../components/Pipe";
 import Character from "../components/Character";
 import Project from "../components/Project";
 // img
-import ProjectTitleImg from "../assets/images/Object/ProjectImg.png";
+import ProjectTitleImg from "../assets/images/Object/ProjectTitleImg.png";
 import MarioBackgroundImg from "../assets/images/Background/MarioBackground.png";
 
 const Wrapper = styled.div`
@@ -19,7 +19,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-    
 `
 
 const ProjectTitle = styled.div`
@@ -52,11 +51,7 @@ function ProjectPage() {
 
   useEffect(() => {
     const onScroll = () => {
-      if (window.scrollY > 800) { // Change 100 to the scroll position you want to trigger the animation
-        setIsScrolling(true);
-      } else {
-        setIsScrolling(false);
-      }
+
     };
 
     window.addEventListener('scroll', onScroll);
