@@ -2,7 +2,7 @@ import CharacterGif from '../assets/images/Me/MeGif.gif'
 import styled from 'styled-components';
 
 const Character = styled.div`
-  z-index: 50;
+  z-index: 10;
   width: 200px;
   height: 200px;
   background-image: url(${CharacterGif});
