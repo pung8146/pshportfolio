@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useRef } from 'react';
 import { motion } from 'framer-motion';
 import styled, { keyframes } from 'styled-components';
-
+import { Link, animateScroll as scroll } from "react-scroll";
 
 // img
 import BackgroundImg1 from '../assets/images/Background/OakWood/background_layer_1.png'
@@ -82,6 +82,17 @@ const textVariants = {
 
 const Main = () => {
   const [isScrolling, setIsScrolling] = useState(false);
+
+  // 스타트버튼 클릭시 이동
+  const projectRef = useRef(null);
+
+  const handleClick = () => {
+    // Scroll to the Project component when the button is clicked
+    window.scrollTo({
+      top: projectRef.current.offsetTop,
+      behavior: 'smooth'
+    });
+  };
 
   useEffect(() => {
     const onScroll = () => {
