@@ -58,40 +58,36 @@ function App() {
   const [characterPosition, setCharacterPosition] = useState(0);
 
   const handleBeforeChange = (current, next) => {
-    setCharacterPosition(next <= 1 ? next : 1);
-  }
+    setCharacterPosition(next);
+  };
   return (
     <Provider store={store}>
-    <Body>
-      <FullPage beforeChange={handleBeforeChange}>
-        <Slide>
-          <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
-            <Main characterPosition={characterPosition} />
-            <Character />
-          </motion.div>
-        </Slide>
-        <Slide>
-          <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
-            <Project characterPosition={characterPosition} />
-            <Character />
-          </motion.div>
-        </Slide>
-        <Slide>
-          <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
-            <Skiles characterPosition={characterPosition} />
-            <Character />
-          </motion.div>
-        </Slide>
-        <Slide>
-          <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
-            <Hire characterPosition={characterPosition} />
-            <Character />
-          </motion.div>
-        </Slide>
-      </FullPage>
-    </Body>
-     </Provider>
+      <Body>
+        <FullPage beforeChange={handleBeforeChange}>
+          <Slide>
+            <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
+              <Main characterPosition={characterPosition} />
+            </motion.div>
+          </Slide>
+          <Slide>
+            <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
+              <Project characterPosition={characterPosition} />
+            </motion.div>
+          </Slide>
+          <Slide>
+            <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
+              <Skiles characterPosition={characterPosition} />
+            </motion.div>
+          </Slide>
+          <Slide>
+            <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
+              <Hire characterPosition={characterPosition} />
+            </motion.div>
+          </Slide>
+          <Character position={characterPosition} />
+        </FullPage>
+      </Body>
+    </Provider>
   );
 }
-
 export default App;

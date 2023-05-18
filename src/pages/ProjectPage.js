@@ -46,28 +46,7 @@ function ProjectPage() {
   const handleBoxBreak1 = () => setVisibleBox1(false);
   const handleBoxBreak2 = () => setVisibleBox2(false);
   const handleBoxBreak3 = () => setVisibleBox3(false);
-// 스크롤시 캐릭터 움직임
-  const [isScrolling, setIsScrolling] = useState(false);
 
-  useEffect(() => {
-    let lastScrollTop = 0;
-  
-    const onScroll = () => {
-      let st = window.pageYOffset || document.documentElement.scrollTop;
-      if (st > lastScrollTop){
-        setIsScrolling(true); // scroll down
-      } else {
-        setIsScrolling(false); // scroll up
-      }
-      lastScrollTop = st <= 0 ? 0 : st; // for mobile
-    };
-  
-    window.addEventListener('scroll', onScroll);
-  
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-    };
-  }, []);
 
 
 
@@ -120,7 +99,6 @@ function ProjectPage() {
         />
 
         </ProjectBox> */}
-      <Character isScrolling={isScrolling} />
       <Pipe/>
      </Wrapper>
   );

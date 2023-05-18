@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { startScrolling, stopScrolling } from './characterSlice';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import CharacterGif from '../../assets/images/Me/MeGif.gif';
 
@@ -10,23 +8,29 @@ const CharacterDiv = styled.div`
   height: 200px;
   background-image: url(${CharacterGif});
   background-size: cover;
-  position: absolute;
+  position: fixed; // Scroll with the viewport
   left: 43%;
   bottom: ${props => props.isScrolling ? '-100%' : '5%'}; 
-  transition: bottom 0.5s ease-in;
+  transition: bottom 0.2s ease-in;
 `;
 
-function Character() {
-  const dispatch = useDispatch();
-  const isScrolling = useSelector(state => state.character.isScrolling);
+const Character = () => {
+  const [isScrolling, setIsScrolling] = useState(false);
+
+  const handleScroll = () => {
+    setIsScrolling(true);
+    clearTimeout(window.scrollFinished);
+    window.scrollFinished = setTimeout(() => {
+      setIsScrolling(false);
+    }, 100); // Adjust the timeout value as needed
+  };
 
   useEffect(() => {
-    dispatch(startScrolling());
-    // 예를 들어, 5초 후에 스크롤을 멈춥니다.
-    setTimeout(() => {
-      dispatch(stopScrolling());
-    }, 5000);
-  }, [dispatch]);
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <CharacterDiv isScrolling={isScrolling} />

@@ -7,9 +7,9 @@ import { Link } from 'react-scroll';
 import BackgroundImg1 from '../assets/images/Background/OakWood/background_layer_1.png'
 import BackgroundImg2 from '../assets/images/Background/OakWood/background_layer_2.png'
 import BackgroundImg3 from '../assets/images/Background/OakWood/background_layer_3.png'
-
-
-
+// 캐릭터 상태관리
+import { useSelector, useDispatch } from 'react-redux';
+import { startScrolling, stopScrolling } from '../components/Character/characterSlice';
 
 import Character from '../components/Character/Character';
 const Wrapper = styled.div`
@@ -84,30 +84,7 @@ const textVariants = {
   visible: { opacity: 1 },
 };
 
-const Main = () => {
-  const [isScrolling, setIsScrolling] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-
-      // 스크롤 다운일 때
-      if (scrollPosition > 0 && !isScrolling) {
-        setIsScrolling(true);
-      }
-
-      // 스크롤 업일 때
-      if (scrollPosition === 0 && isScrolling) {
-        setIsScrolling(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [isScrolling]);
+function Main() {
 
   return (
     <Wrapper>
@@ -134,7 +111,6 @@ const Main = () => {
           START
         </motion.span>
       </StartButton>
-      <Character isScrolling={isScrolling} />
     </Wrapper>
   );
 };
