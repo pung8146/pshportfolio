@@ -22,7 +22,7 @@ import BackgroundImg10 from '../assets/images/Background/ParallaxForestBackgroun
 
 
 
-import Character from '../components/Character';
+import Character from '../components/Character/Character';
 const Wrapper = styled.div`
   width: 100%;
   height: 100vh;

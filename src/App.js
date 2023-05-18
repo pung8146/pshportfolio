@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from 'styled-components';
 import { motion } from "framer-motion";
 import { FullPage, Slide } from 'react-full-page';
@@ -8,6 +8,27 @@ import Main from "./pages/Main";
 import Project from "./pages/ProjectPage";
 import Skiles from "./pages/Skiles";
 import Hire from "./pages/Hire";
+// 상태관리
+import { createSlice, configureStore } from '@reduxjs/toolkit';
+import { Provider, useDispatch, useSelector } from 'react-redux'
+import Character from '../src/components/Character/Character';
+
+const characterSlice = createSlice({
+  name: 'character',
+  initialState: { character: { isScrolling: false } },
+  reducers: {
+    startScrolling: state => {
+      state.character.isScrolling = true;
+    },
+    stopScrolling: state => {
+      state.character.isScrolling = false;
+    },
+  },
+});
+
+export const { startScrolling, stopScrolling } = characterSlice.actions;
+
+const store = configureStore({ reducer: characterSlice.reducer });
 
 const Body = styled.div`
   background-color: beige;
@@ -37,35 +58,39 @@ function App() {
   const [characterPosition, setCharacterPosition] = useState(0);
 
   const handleBeforeChange = (current, next) => {
-    // next is the index of the next slide
-    // If the next slide is Project or before, set the position to next, otherwise set it to the index of Project (1 in this case)
     setCharacterPosition(next <= 1 ? next : 1);
   }
   return (
+    <Provider store={store}>
     <Body>
       <FullPage beforeChange={handleBeforeChange}>
-        {/* <Slide>
+        <Slide>
           <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
             <Main characterPosition={characterPosition} />
+            <Character />
           </motion.div>
         </Slide>
         <Slide>
           <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
             <Project characterPosition={characterPosition} />
+            <Character />
           </motion.div>
-        </Slide> */}
+        </Slide>
         <Slide>
           <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
             <Skiles characterPosition={characterPosition} />
+            <Character />
           </motion.div>
         </Slide>
         <Slide>
           <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
             <Hire characterPosition={characterPosition} />
+            <Character />
           </motion.div>
         </Slide>
       </FullPage>
     </Body>
+     </Provider>
   );
 }
 

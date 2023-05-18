@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 // components
 import Pipe from "../components/Pipe";
-import Character from "../components/Character";
+import Character from "../components/Character/Character";
 import Project from "../components/Project";
 // img
 import ProjectTitleImg from "../assets/images/Object/ProjectTitleImg.png";
@@ -50,12 +50,20 @@ function ProjectPage() {
   const [isScrolling, setIsScrolling] = useState(false);
 
   useEffect(() => {
+    let lastScrollTop = 0;
+  
     const onScroll = () => {
-
+      let st = window.pageYOffset || document.documentElement.scrollTop;
+      if (st > lastScrollTop){
+        setIsScrolling(true); // scroll down
+      } else {
+        setIsScrolling(false); // scroll up
+      }
+      lastScrollTop = st <= 0 ? 0 : st; // for mobile
     };
-
+  
     window.addEventListener('scroll', onScroll);
-
+  
     return () => {
       window.removeEventListener('scroll', onScroll);
     };
@@ -68,7 +76,7 @@ function ProjectPage() {
       <ProjectTitle>
         <img src={ProjectTitleImg} alt="ProjectTitleImg"/>
       </ProjectTitle>
-        <ProjectBox>
+        {/* <ProjectBox>
         <Project 
           bgColor="red"
           onClick={handleBoxBreak1}
@@ -111,7 +119,7 @@ function ProjectPage() {
           }}
         />
 
-        </ProjectBox>
+        </ProjectBox> */}
       <Character isScrolling={isScrolling} />
       <Pipe/>
      </Wrapper>

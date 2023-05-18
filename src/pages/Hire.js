@@ -3,43 +3,45 @@ import { motion } from 'framer-motion';
 import styled from "styled-components";
 
 // 이미지
-import PokeballImg from "../assets/images/Object/DarkPoketBall.png";
+import PoketballImg from "../assets/images/Object/DarkPoketBall.png";
 
 const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
-  background-color: white;
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
+  overflow: hidden; // 이미지가 화면 밖으로 나가도 보이지 않게 설정
+`
 
-const ImageWrapper = styled(motion.div)`
-  width: 200px;
-  height: 200px;
-  background-image: url(${PokeballImg});
+const PoketBallScreenEffects = styled(motion.div)`
+  width: 100%;
+  height: 100%;
+  background-image: url(${PoketballImg});
+  background-size: cover; // 이미지가 화면 전체를 채우도록 설정
   background-repeat: no-repeat;
-  background-size: contain;
+  background-position: center;
+  position: absolute;
+  transition: transform ${props => props.duration}s ease-out; // transition duration is now dynamic
+  transform: scale(${props => props.scale});
 `;
 
 const Hire = () => {
   const [scale, setScale] = useState(1);
-  const [componentTop, setComponentTop] = useState(0);
-
-  useEffect(() => {
-    setComponentTop(window.pageYOffset + document.querySelector('#hire').getBoundingClientRect().top);
-  }, []);
+  const [lastScroll, setLastScroll] = useState(0); // 새로운 상태 값으로 마지막 스크롤 위치를 기록
+  const [transitionDuration, setTransitionDuration] = useState(0.8); // New state for transition duration
 
   const handleScroll = () => {
     const position = window.pageYOffset;
-    if (position < componentTop) {
-      setScale(1);
-    } else if (position < componentTop + window.innerHeight) {
-      setScale(1 + ((position - componentTop) / window.innerHeight) * 2); // 스케일 값 조절
+    const totalHeight = document.body.scrollHeight - window.innerHeight;
+    
+    if (position > lastScroll && position > totalHeight * 0.95) {
+      setScale(1 + (position - totalHeight * 0.95) / 10);
+      setTransitionDuration(1); // Set longer duration for expanding
     } else {
-      setScale(3); // 최대 크기를 3으로 설정
+      setScale(1);
+      setTransitionDuration(0.5); // Set shorter duration for shrinking
     }
+
+    setLastScroll(position);
   };
 
   useEffect(() => {
@@ -48,15 +50,11 @@ const Hire = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [componentTop]);
+  }, []);
 
   return (
-    <Wrapper id="hire">
-      <ImageWrapper
-        style={{
-          transform: `scale(${scale})`, // 스크롤에 따라 크기를 조절
-        }}
-      />
+    <Wrapper>
+      <PoketBallScreenEffects scale={scale} duration={transitionDuration} />
     </Wrapper>
   );
 };
