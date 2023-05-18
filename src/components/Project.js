@@ -1,19 +1,18 @@
+import { useState } from "react";
 import styled from "styled-components";
 // img
 import RandomBoxImg from '../assets/images/Object/RandomBox.png'
 import FigmaImg from '../assets/images/Icon/Figma.png'
 import GithubImg from '../assets/images/Icon/Github.png'
 import SheetImg from '../assets/images/Icon/Sheet.png'
-
+  
 const ProjectStyled = styled.div`
+  position: relative; /* Add this */
   cursor: pointer;
   display: flex;
-  width:31%;
+  width:32%;
   height: 100%;
   color:Black;
-  background: url(${RandomBoxImg}) no-repeat center;
-  background-color: green;
-  visibility: ${props => props.visible ? 'visible' : 'hidden'};
   .ProjectLogo{
     margin: 10%;
     width: 80%;
@@ -29,7 +28,19 @@ const ProjectStyled = styled.div`
     padding: 5px;
   }
 `;
-
+const Overlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(${RandomBoxImg});
+  background-size: cover;
+  opacity: ${props => props.clicked ? 0 : 1};
+  transition: opacity 0.5s ease-in-out;
+  cursor: pointer;
+  z-index: 1; /* Add this */
+`;
 const ProjectLeftBox = styled.div`
   width: 40%;
   height: 100%;
@@ -70,12 +81,19 @@ li{
 `
 
 function Project({ bgColor, onClick, visible, projectInfo }) {
+  const [clicked, setClicked] = useState(false);
+
+  const handleClick = () => {
+    setClicked(!clicked);
+  };
+
   return (
     <ProjectStyled 
       bgColor={bgColor}
-      onClick={onClick}
+      onClick={handleClick}
       visible={visible}
     >
+      <Overlay clicked={clicked} onClick={handleClick} />
       <ProjectLeftBox>
         <div className="ProjectLogo" style={{ backgroundImage: `url(${projectInfo.logoUrl})` }}></div>
         <h1>{projectInfo.name}</h1>

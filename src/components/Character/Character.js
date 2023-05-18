@@ -9,8 +9,8 @@ const CharacterDiv = styled.div`
   background-image: url(${CharacterGif});
   background-size: cover;
   position: fixed; // Scroll with the viewport
-  left: 43%;
-  bottom: ${props => props.isScrolling ? '-100%' : '5%'}; 
+  left: 20%;
+  bottom: ${props => props.isScrolling ? '-100%' : '10%'}; 
   transition: bottom 0.2s ease-in;
 `;
 

@@ -1,11 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react'
+import styled from 'styled-components'
 
-const Skiles = () => {
+import PokeBackgroundImg  from '../assets/images/Background/pokeBackground.jpg'
 
+const Wrapper = styled.div`
+  width: 100%;
+  height: 100vh;
+  background-image: url(${PokeBackgroundImg});
+  background-size: 100% 100%;
+`
+
+
+function Skiles() {
   return (
-    <div className="header">
-    </div>
-  );
-};
+    <Wrapper></Wrapper>
+  )
+}
 
-export default Skiles;
+export default Skiles
