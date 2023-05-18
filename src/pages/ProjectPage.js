@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import styled from "styled-components";
 
 // components
 import Pipe from "../components/Pipe";
-import Character from "../components/Character/Character";
 import Project from "../components/Project";
 // img
 import ProjectTitleImg from "../assets/images/Object/ProjectTitleImg.png";
@@ -36,17 +35,12 @@ const ProjectBox = styled.div`
   text-align: center;
   display: flex;
   justify-content: space-between;
-  border: 3px solid blue;
 `
 
 function ProjectPage() {
   const [visibleBox1, setVisibleBox1] = useState(true);
-  const [visibleBox2, setVisibleBox2] = useState(true);
-  const [visibleBox3, setVisibleBox3] = useState(true);
 
   const handleBoxBreak1 = () => setVisibleBox1(false);
-  const handleBoxBreak2 = () => setVisibleBox2(false);
-  const handleBoxBreak3 = () => setVisibleBox3(false);
 
   return (
      <Wrapper id="projectPage">
