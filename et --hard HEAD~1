@@ -1,0 +1,150 @@
+[33mcommit 3ba8ec9029adb91c513f0de9c337436f905cd415[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: pung8146 <pung8146@naver.com>
+Date:   Sat May 20 14:38:10 2023 +0900
+
+    포켓볼 이미지 구현
+
+[33mcommit f9b80b04a0883796f080a16ede3abba2880e5e71[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: pung8146 <pung8146@naver.com>
+Date:   Thu May 18 23:28:29 2023 +0900
+
+    RandomBox img 수정
+    두번 클릭했을때 상자나오는거 수정
+
+[33mcommit 43220ef127451024f24f96734961b33498107153[m
+Author: pung8146 <pung8146@naver.com>
+Date:   Thu May 18 19:57:46 2023 +0900
+
+    Hire 포켓볼 제작하기
+
+[33mcommit 15848aad47d6f47d930c61cfe23c1defed25ac7e[m
+Author: pung8146 <pung8146@naver.com>
+Date:   Thu May 18 14:52:22 2023 +0900
+
+    Redux 로 캐릭터 위치고정 어디서든 동일한 애니메이션 구현
+
+[33mcommit c21a2a14e5ec7ffc12f655edfb041ded5bc46424[m
+Author: pung8146 <pung8146@naver.com>
+Date:   Thu May 18 12:49:38 2023 +0900
+
+     Redux 적용~
+
+[33mcommit a244dd2be235ea7d071bc256e2fda4583342fad7[m
+Author: pung8146 <pung8146@naver.com>
+Date:   Wed May 17 22:35:40 2023 +0900
+
+    Hire 페이지 제작중
+
+[33mcommit 54153c6f0846e136c168e02d8711fa83be6daef5[m
+Author: pung8146 <pung8146@naver.com>
+Date:   Wed May 17 21:37:17 2023 +0900
+
+    MainPage 변경 ProjectPage 캐릭터 위치에러
+
+[33mcommit 2ab4c109e3bfa284231c5137ffcdd93cb41b2576[m
+Author: pung8146 <pung8146@naver.com>
+Date:   Wed May 17 18:47:37 2023 +0900
+
+    여백 제거
+
+[33mcommit 936e4f0a87c3b2b5037c3d5eaa502e7d311fa407[m
+Author: pung8146 <pung8146@naver.com>
+Date:   Wed May 17 18:41:18 2023 +0900
+
+    클릭시 이동이 안됨
+
+[33mcommit 44179c034b0a76d8c6246083e382a806dd56cbad[m
+Author: pung8146 <pung8146@naver.com>
+Date:   Wed May 17 18:25:40 2023 +0900
+
+    react-scroll 설치
+
+[33mcommit 976c5fea41188c220a26137fd565dc18335dd253[m
+Author: pung8146 <pung8146@naver.com>
+Date:   Wed May 17 18:03:41 2023 +0900
+
+    클릭시 이동하기 만들기
+
+[33mcommit 64958fdafee0d277d69b2afc48bb7276fee7d8db[m
+Author: pung8146 <pung8146@naver.com>
+Date:   Wed May 17 16:12:19 2023 +0900
+
+    프로젝트 font 수정하기
+
+[33mcommit 93a9b1b5e3a9e6a3a278b436355849f15ea1673e[m
+Author: pung8146 <pung8146@naver.com>
+Date:   Tue May 16 18:58:21 2023 +0900
+
+    Project 갤러리를 만들자
+
+[33mcommit 472334d39bfc5fdfbfe8e3c7e5a521035807ff0c[m
+Author: pung8146 <pung8146@naver.com>
+Date:   Tue May 16 13:33:46 2023 +0900
+
+    main page 각각의 div가 움직이게만듬 , 속도 조정이 필요함
+
+[33mcommit f48d60f4cea6c3539ab9880b24f05c8dce536767[m
+Author: pung8146 <pung8146@naver.com>
+Date:   Tue May 16 06:06:33 2023 +0900
+
+    button make
+
+[33mcommit 6a6ce2463d32263246255e380caf636b8cc53d53[m
+Author: pung8146 <pung8146@naver.com>
+Date:   Mon May 15 21:28:56 2023 +0900
+
+    FullPage-js 설치
+
+[33mcommit 15e078c58970ef2cc00077b5d01d6967b0b9feaa[m
+Author: pung8146 <pung8146@naver.com>
+Date:   Mon May 15 15:58:31 2023 +0900
+
+    Pages 구성!
+
+[33mcommit b0be44e2e1835f7356d7c0a8dbd52800ab428636[m
+Author: pung8146 <pung8146@naver.com>
+Date:   Sun May 14 16:10:13 2023 +0900
+
+    Swiper Sliders
+
+[33mcommit 61420397979aeff82aa286d2306d978d21b7ca13[m
+Author: pung8146 <pung8146@naver.com>
+Date:   Sun May 14 14:07:05 2023 +0900
+
+    Project Gallery 시도중
+
+[33mcommit bc6620542429c853c807f02bd969e313d9c66e56[m
+Author: pung8146 <pung8146@naver.com>
+Date:   Fri May 12 20:10:21 2023 +0900
+
+    TripleSlider 적용1
+
+[33mcommit 6efc56d404b1ae51bffaccb7bc9806c5c9de3fec[m
+Author: pung8146 <pung8146@naver.com>
+Date:   Fri May 12 19:52:44 2023 +0900
+
+    Swiper 이미지 슬라이더 추가
+
+[33mcommit 099ed35c6a45f57c0686b99ba44a5be92e097ed8[m
+Author: pung8146 <pung8146@naver.com>
+Date:   Fri May 12 18:38:28 2023 +0900
+
+    horizontal 마우스 스크롤이 작동이 되지 않음
+
+[33mcommit 2a0decddca4c536aa80708be3520b23ff02f8c1d[m
+Author: pung8146 <pung8146@naver.com>
+Date:   Fri May 12 15:08:19 2023 +0900
+
+    react-horizontal-scrolling-menu 적용 시도
+
+[33mcommit 78e2a01bd63644e32dd7e578f0153c27417f2db2[m
+Author: pung8146 <pung8146@naver.com>
+Date:   Thu May 11 21:38:14 2023 +0900
+
+    first commit
+
+[33mcommit f6f8f07aecf55823449101721958946aeae6aff0[m
+Author: pung8146 <pung8146@naver.com>
+Date:   Thu May 11 17:25:52 2023 +0900
+
+    Initialize project using Create React App

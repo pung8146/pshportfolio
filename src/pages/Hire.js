@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import styled from "styled-components";
 
 // 이미지
 import PokeBackgroundImg  from '../assets/images/Background/pokeBackground.jpg'
-import PoketballImg from "../assets/images/Object/DarkPoketBall.png";
+import BattlePokeballImg from "../assets/images/Object/DarkPoketBall.png";
+import PokeBallImg from "../assets/images/Object/PokeBall.png";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -18,7 +19,7 @@ const Wrapper = styled.div`
 const PoketBallScreenEffects = styled(motion.div)`
   width: 100%;
   height: 100%;
-  background-image: url(${PoketballImg});
+  background-image: url(${BattlePokeballImg});
   background-size: cover; // 이미지가 화면 전체를 채우도록 설정
   background-repeat: no-repeat;
   background-position: center;
@@ -28,17 +29,39 @@ const PoketBallScreenEffects = styled(motion.div)`
 `;
 
 const PokeBall = styled(motion.div)`
-  z-index: 13;
+  z-index: 14;
   width: 200px;
   height: 200px;
   border-radius: 100%;
-  background-color:red;
+  background-image: url(${PokeBallImg});
+  background-size: cover;
   position: absolute;
   right: 30%;
   top:30%;
   cursor: pointer;
 `
+const CatchCircle = styled(motion.div)`
+  width:300px;
+  height:300px;
+  border-radius: 100%;
+  border: 5px dashed green;
+  position: absolute;
+  left:17%;
+  bottom:5%;
+`
 
+const pokeBallVariants = {
+  hover: { scale: 1.2 },
+  drag: {
+    scale: 1.5,
+    rotate: [0, 360], 
+    transition: {
+      duration: 1, // rotation duration
+      repeat: Infinity, // repeat the rotation infinitely
+      ease: "linear" // linear easing for smooth rotation
+    }
+  }
+};
 const Hire = () => {
   // 화면 진입시 나오는 효과
   const [scale, setScale] = useState(1);
@@ -68,26 +91,49 @@ const Hire = () => {
     };
   }, []);
 
-  const pokeballRef = useRef();
+  const pokeBallRef = useRef();
 
+
+  const [catchCircleVisible, setCatchCircleVisible] = useState(false);
+
+  const handleHoverStart = () => {
+    setCatchCircleVisible(true);
+  }
+
+  const handleHoverEnd = () => {
+    setCatchCircleVisible(false);
+  }
+
+  const catchCircleVariants = {
+    initial: { opacity: 0 },
+    animate: { opacity: 1, transition: { duration: 0.5, yoyo: Infinity } },
+    exit: { opacity: 0, transition: { duration: 0.2 } }
+  }
   return (
-    <Wrapper>
+<Wrapper ref={pokeBallRef}>
       <PoketBallScreenEffects scale={scale} duration={transitionDuration} />
       <PokeBall 
-        ref={pokeballRef}
+        ref={pokeBallRef}
+        variants={pokeBallVariants}
         drag
-        onDragEnd={(event, info) => {
-          // Reset to initial position after 2 seconds
-          setTimeout(() => {
-            pokeballRef.current.style.transform = "";
-          }, 2000);
-        }}
-        dragMomentum={false}
-        whileDrag={{ scale: 1.2 }}
-        dragConstraints={Wrapper}
-        dragTransition={{ bounceStiffness: 600, bounceDamping: 10 }}
-        dragElastic={0.2}
+        dragConstraints={pokeBallRef} 
+        dragElastic={1} 
+        dragMomentum={true} 
+        onHoverStart={handleHoverStart}
+        onHoverEnd={handleHoverEnd}
+        whileHover="hover"
+        whileDrag="drag"
       />
+      <AnimatePresence>
+        {catchCircleVisible && (
+          <CatchCircle 
+            variants={catchCircleVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+          />
+        )}
+      </AnimatePresence>
     </Wrapper>
   );
 };
