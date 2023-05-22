@@ -145,17 +145,17 @@ const Hire = () => {
 
   // modal code
   const [modalOpen, setModalOpen] = useState(false);
+  const [pokeBallKey, setPokeBallKey] = useState(0); // New state for PokeBall key
 
   // set up the refs and measuring functions
   const pokeBallRef = useRef();  // New ref for PokeBall
   const catchCircleRef = useRef();  // New ref for CatchCircle
   const [pokeBallPosition, setPokeBallPosition] = useState({ x: 0, y: 0 })
-
   const [pokeBallInitialPosition, setPokeBallInitialPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    // This useEffect will run once after the first render, because its dependency array is empty.
-    // We get the initial position of the PokeBall here.
+    // 이 useEffect는 처음 렌더링 후 한 번만 실행됩니다. (의존성 배열이 비어있기 때문)
+    // 여기서 PokeBall의 초기 위치를 얻습니다.
     const initialPosition = pokeBallRef.current.getBoundingClientRect();
     setPokeBallInitialPosition({ x: initialPosition.x, y: initialPosition.y });
   }, []);
@@ -171,41 +171,86 @@ const Hire = () => {
     
     if (calculatedDistance <= pokeBallBounds.width / 2 + catchCircleBounds.width / 2) {
       console.log("Pokeball has hit the CatchCircle!");
-  
-      // Reset the position of the PokeBall
-      setPokeBallPosition(pokeBallInitialPosition)
-  
+
+      // Reset the position of the PokeBall to the initial position
+      setPokeBallPosition(pokeBallInitialPosition);
+
       // Alert the user in the console
       console.log("PokeBall and CatchCircle are overlapping!");
 
       // Open the modal
       setModalOpen(true);
-    }
-};
 
-const closeModal = () => {
-  setModalOpen(false);
-}
+      // Reset the PokeBall position when the modal opens
+      setPokeBallKey(prevKey => prevKey + 1);
+    }
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  }
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  useEffect(() => {
+    const unsubscribeX = x.onChange(value => {
+      setPokeBallPosition(prev => ({ ...prev, x: value }));
+    });
+
+    const unsubscribeY = y.onChange(value => {
+      setPokeBallPosition(prev => ({ ...prev, y: value }));
+    });
+
+    return () => {
+      unsubscribeX();
+      unsubscribeY();
+    };
+  }, []);
+
+  const handleDragEnd = (event, info) => {
+    const pokeBallBounds = pokeBallRef.current.getBoundingClientRect();
+    const catchCircleBounds = catchCircleRef.current.getBoundingClientRect();
   
+    const calculatedDistance = Math.sqrt(
+      (pokeBallBounds.left + pokeBallBounds.width / 2 - catchCircleBounds.left - catchCircleBounds.width / 2) ** 2 +
+      (pokeBallBounds.top + pokeBallBounds.height / 2 - catchCircleBounds.top - catchCircleBounds.height / 2) ** 2
+    );
+  
+    // If the PokeBall is not close enough to the CatchCircle, reset its position
+    if (calculatedDistance > pokeBallBounds.width / 2 + catchCircleBounds.width / 2) {
+      // Reset the position of the PokeBall to the initial position
+      x.set(0);
+      y.set(0);
+    } else {
+      console.log("Pokeball has hit the CatchCircle!");
+  
+      // Open the modal
+      setModalOpen(true);
+  
+      // Reset the position of the PokeBall to the initial position
+      x.set(0);
+      y.set(0);
+    }
+  };
   return (
     <Wrapper ref={wrapperRef}>
     <PoketBallScreenEffects scale={scale} duration={transitionDuration} />
-    <PokeBall 
-      ref={pokeBallRef}
-      variants={pokeBallVariants}
-      drag
-      // Use the wrapperRef as the dragConstraints
-      dragConstraints={wrapperRef} 
-      dragElastic={1} 
-      dragMomentum={true} 
-      onHoverStart={handleHoverStart}
-      onHoverEnd={handleHoverEnd}
-      onDrag={handleDrag}
-      whileHover="hover"
-      whileDrag="drag"
-      // Update the x and y values to move the PokeBall back to the original position
-      style={{ x: pokeBallPosition.x, y: pokeBallPosition.y }}
-    />
+    <PokeBall
+        ref={pokeBallRef}
+        variants={pokeBallVariants}
+        drag
+        dragConstraints={wrapperRef}
+        dragElastic={1}
+        dragMomentum={true}
+        onHoverStart={handleHoverStart}
+        onHoverEnd={handleHoverEnd}
+        onDrag={handleDrag}
+        onDragEnd={handleDragEnd} // New event handler for dragEnd
+        whileHover="hover"
+        whileDrag="drag"
+        style={{ x, y }} // Updated the style to use motion values
+      />
      <AnimatePresence>
       {modalOpen && (
         <ModalWrapper
