@@ -62,7 +62,39 @@ const pokeBallVariants = {
     }
   }
 };
+// modal styled
+// 모달 전체를 감싸는 배경 컴포넌트
+const ModalWrapper = styled(motion.div)`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+`;
 
+// 모달 컨텐츠를 감싸는 컴포넌트
+const ModalContent = styled.div`
+  width: 500px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+`;
+
+// 모달 닫기 버튼 컴포넌트
+const CloseButton = styled.button`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+`;
 const Hire = () => {
   // 화면 진입시 나오는 효과
   const [scale, setScale] = useState(1);
@@ -111,6 +143,9 @@ const Hire = () => {
     exit: { opacity: 0, transition: { duration: 0.2 } }
   }
 
+  // modal code
+  const [modalOpen, setModalOpen] = useState(false);
+
   // set up the refs and measuring functions
   const pokeBallRef = useRef();  // New ref for PokeBall
   const catchCircleRef = useRef();  // New ref for CatchCircle
@@ -138,12 +173,19 @@ const Hire = () => {
       console.log("Pokeball has hit the CatchCircle!");
   
       // Reset the position of the PokeBall
-       setPokeBallPosition(pokeBallInitialPosition)
+      setPokeBallPosition(pokeBallInitialPosition)
   
       // Alert the user in the console
       console.log("PokeBall and CatchCircle are overlapping!");
+
+      // Open the modal
+      setModalOpen(true);
     }
-  };
+};
+
+const closeModal = () => {
+  setModalOpen(false);
+}
   
   return (
     <Wrapper ref={wrapperRef}>
@@ -164,7 +206,20 @@ const Hire = () => {
       // Update the x and y values to move the PokeBall back to the original position
       style={{ x: pokeBallPosition.x, y: pokeBallPosition.y }}
     />
-    <AnimatePresence>
+     <AnimatePresence>
+      {modalOpen && (
+        <ModalWrapper
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+        >
+          <ModalContent>
+            <CloseButton onClick={closeModal}>Close</CloseButton>
+            <h1>Modal Title</h1>
+            <p>Modal content...</p>
+          </ModalContent>
+        </ModalWrapper>
+      )}
       {catchCircleVisible && (
         <CatchCircle 
         ref={catchCircleRef}
