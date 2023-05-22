@@ -14,7 +14,7 @@ const CharacterDiv = styled.div`
   transition: bottom 0.2s ease-in;
 `;
 
-const Character = () => {
+const Character = React.forwardRef((props, ref) => {
   const [isScrolling, setIsScrolling] = useState(false);
 
   const handleScroll = () => {
@@ -33,8 +33,10 @@ const Character = () => {
   }, []);
 
   return (
-    <CharacterDiv isScrolling={isScrolling} />
+    <div ref={ref}>
+      <CharacterDiv isScrolling={isScrolling} />
+    </div>
   );
-};
+});
 
 export default Character;
