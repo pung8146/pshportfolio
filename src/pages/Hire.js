@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useMotionValue } from 'framer-motion';
 import styled from "styled-components";
-import useMeasure from 'react-use-measure'
 
 // 이미지
 import PokeBackgroundImg  from '../assets/images/Background/pokeBackground.jpg'
@@ -115,11 +114,16 @@ const Hire = () => {
   // set up the refs and measuring functions
   const pokeBallRef = useRef();  // New ref for PokeBall
   const catchCircleRef = useRef();  // New ref for CatchCircle
-  const [pokeBallPosition, setPokeBallPosition] = useState({ x: 0, y: 0 });
-  const pokeBallX = useMotionValue(0);
-  const pokeBallY = useMotionValue(0);
+  const [pokeBallPosition, setPokeBallPosition] = useState({ x: 0, y: 0 })
 
-  const [distance, setDistance] = useState(0);
+  const [pokeBallInitialPosition, setPokeBallInitialPosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    // This useEffect will run once after the first render, because its dependency array is empty.
+    // We get the initial position of the PokeBall here.
+    const initialPosition = pokeBallRef.current.getBoundingClientRect();
+    setPokeBallInitialPosition({ x: initialPosition.x, y: initialPosition.y });
+  }, []);
 
   const handleDrag = (event, info) => {
     const pokeBallBounds = pokeBallRef.current.getBoundingClientRect();
@@ -129,14 +133,12 @@ const Hire = () => {
       (pokeBallBounds.left + pokeBallBounds.width / 2 - catchCircleBounds.left - catchCircleBounds.width / 2) ** 2 +
       (pokeBallBounds.top + pokeBallBounds.height / 2 - catchCircleBounds.top - catchCircleBounds.height / 2) ** 2
     );
-  
-    setDistance(calculatedDistance);
     
     if (calculatedDistance <= pokeBallBounds.width / 2 + catchCircleBounds.width / 2) {
       console.log("Pokeball has hit the CatchCircle!");
   
       // Reset the position of the PokeBall
-      setPokeBallPosition({ x: 0, y: 0 });
+       setPokeBallPosition(pokeBallInitialPosition)
   
       // Alert the user in the console
       console.log("PokeBall and CatchCircle are overlapping!");
