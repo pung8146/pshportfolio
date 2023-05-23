@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from 'styled-components';
 import { motion } from "framer-motion";
 import { FullPage, Slide } from 'react-full-page';
@@ -6,11 +6,11 @@ import { FullPage, Slide } from 'react-full-page';
 // 페이지 컴포넌트들
 import Main from "./pages/Main";
 import Project from "./pages/ProjectPage";
-import Skiles from "./pages/Skiles";
+import Skills from "./pages/Skills";
 import Hire from "./pages/Hire";
 // 상태관리
 import { createSlice, configureStore } from '@reduxjs/toolkit';
-import { Provider, useDispatch, useSelector } from 'react-redux'
+import { Provider } from 'react-redux'
 import Character from '../src/components/Character/Character';
 
 const characterSlice = createSlice({
@@ -64,7 +64,7 @@ function App() {
     <Provider store={store}>
       <Body>
         <FullPage beforeChange={handleBeforeChange}>
-          <Slide>
+          {/* <Slide>
             <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
               <Main characterPosition={characterPosition} />
             </motion.div>
@@ -73,10 +73,10 @@ function App() {
             <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
               <Project characterPosition={characterPosition} />
             </motion.div>
-          </Slide>
+          </Slide> */}
           <Slide>
             <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
-              <Skiles characterPosition={characterPosition} />
+              <Skills characterPosition={characterPosition} />
             </motion.div>
           </Slide>
           <Slide>

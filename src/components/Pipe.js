@@ -8,7 +8,7 @@ const Pipe = styled.div`
   background-size: 100% 100%;
   position: absolute;
   bottom: 0;
-  left: 50%;
+  left: 25%;
   z-index: 11;
   transform: translateX(-50%);
   animation: ${props => props.isScrolling ? 'rise 2s linear forwards' : 'none'};
