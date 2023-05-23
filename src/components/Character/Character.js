@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import CharacterGif from '../../assets/images/Me/MeGif.gif';
+import CharacterGif from '../../assets/images/Me/result.gif';
 
 const CharacterDiv = styled.div`
   z-index: 10;
