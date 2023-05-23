@@ -16,6 +16,7 @@ const GlobalStyles = createGlobalStyle`
         border: 0;
         font-size: 10px;
         vertical-align: baseline;
+        font-family: 'VT323', cursive;
     }
     body{
         line-height: 1;

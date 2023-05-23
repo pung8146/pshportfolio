@@ -19,8 +19,9 @@ const SkillBar = styled.img`
   margin-left: 1rem;  // Add some space between the text and the bar
 `;
 
-const SkillText = styled.P`
-  // Your styling here
+const SkillText = styled.p`
+  font-size: 2rem;
+  font-weight: bold;
 `;
 
 function Skill({ logoSrc, text, barSrc }) {
