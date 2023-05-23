@@ -139,21 +139,21 @@ const Hire = () => {
     const calculatedDistance = Math.sqrt(
       (pokeBallBounds.left + pokeBallBounds.width / 2 - catchCircleBounds.left - catchCircleBounds.width / 2) ** 2 +
       (pokeBallBounds.top + pokeBallBounds.height / 2 - catchCircleBounds.top - catchCircleBounds.height / 2) ** 2
-      );
+    );
   
-      if (calculatedDistance <= pokeBallBounds.width / 2 + catchCircleBounds.width / 2) {
-        console.log("Pokeball has hit the CatchCircle!");
-      
-        // Reset the position of the PokeBall to the initial position
-        setPokeBallPosition(pokeBallInitialPosition);
-        // Alert the user in the console
-        console.log("PokeBall and CatchCircle are overlapping!");
-      
-        // Reset the PokeBall position when the modal opens
-        setPokeBallKey(prevKey => prevKey + 1);
-      }
+    if (calculatedDistance <= pokeBallBounds.width / 2 + catchCircleBounds.width / 2) {
+      console.log("Pokeball has hit the CatchCircle!");
+  
+      // Open the contact form modal
+      openContactForm();
+  
+      x.set(0);
+      y.set(0);
+  
+      // Reset the PokeBall position when the modal opens
+      setPokeBallKey(prevKey => prevKey + 1);
+    }
   };
-
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
