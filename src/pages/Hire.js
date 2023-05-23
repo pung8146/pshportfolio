@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence, useMotionValue } from 'framer-motion';
-import styled from "styled-components";
+import styled ,{keyframes}from "styled-components";
 
 // 이미지
 import PokeBackgroundImg  from '../assets/images/Background/pokeBackground.jpg'
@@ -41,16 +41,24 @@ const PokeBall = styled(motion.div)`
   right: 30%;
   top:30%;
   cursor: pointer;
-`
+  `
+// Circle 반짝임 효과
+const flashingBorder = keyframes`
+  0% { border-color: red; }
+  50% { border-color: white; }
+  100% { border-color: pink; }
+`;
 const CatchCircle = styled(motion.div)`
   width: 300px;
   height: 300px;
   border-radius: 50%;
-  border: 5px dashed green;
+  border: 5px dashed red;
   position: absolute;
   left: 17%;
   bottom: 5%;
+  animation: ${flashingBorder} 1s linear infinite; // 반짝이는 효과 적용
 `;
+
 
 const pokeBallVariants = {
   hover: { scale: 1.2 },
@@ -106,12 +114,11 @@ const Hire = () => {
   const handleHoverEnd = () => {
     setCatchCircleVisible(false);
   }
-  
   const catchCircleVariants = {
-    initial: { opacity: 0 },
-    animate: { opacity: 1, transition: { duration: 0.5, yoyo: Infinity } },
+    initial: { opacity: 0, rotate: 0 },
+    animate: { opacity: 1, rotate: 360, transition: { duration: 0.5, yoyo: Infinity, rotate: { duration: 5, repeat: Infinity, ease: "linear" } } },
     exit: { opacity: 0, transition: { duration: 0.2 } }
-  }
+  };
 
   // 모달 code
   const [pokeBallKey, setPokeBallKey] = useState(0); // New state for PokeBall key
