@@ -6,6 +6,8 @@ import styled from "styled-components";
 import PokeBackgroundImg  from '../assets/images/Background/pokeBackground.jpg'
 import BattlePokeballImg from "../assets/images/Object/DarkPoketBall.png";
 import PokeBallImg from "../assets/images/Object/PokeBall.png";
+// 컴포넌트
+import ContactFormModal from '../components/ContactFormModal'; // Replace with the path to ContactFormModal
 
 const Wrapper = styled.div`
   width: 100%;
@@ -41,14 +43,14 @@ const PokeBall = styled(motion.div)`
   cursor: pointer;
 `
 const CatchCircle = styled(motion.div)`
-  width:300px;
-  height:300px;
-  border-radius: 100%;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
   border: 5px dashed green;
   position: absolute;
-  left:17%;
-  bottom:5%;
-`
+  left: 17%;
+  bottom: 5%;
+`;
 
 const pokeBallVariants = {
   hover: { scale: 1.2 },
@@ -62,39 +64,7 @@ const pokeBallVariants = {
     }
   }
 };
-// modal styled
-// 모달 전체를 감싸는 배경 컴포넌트
-const ModalWrapper = styled(motion.div)`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-`;
 
-// 모달 컨텐츠를 감싸는 컴포넌트
-const ModalContent = styled.div`
-  width: 500px;
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-  position: relative;
-`;
-
-// 모달 닫기 버튼 컴포넌트
-const CloseButton = styled.button`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-`;
 const Hire = () => {
   // 화면 진입시 나오는 효과
   const [scale, setScale] = useState(1);
@@ -102,7 +72,7 @@ const Hire = () => {
   const [transitionDuration, setTransitionDuration] = useState(0.8); // New state for transition duration
   
   const wrapperRef = useRef();
-
+  
   const handleScroll = () => {
     const position = window.pageYOffset;
     const totalHeight = document.body.scrollHeight - window.innerHeight;
@@ -125,28 +95,30 @@ const Hire = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
-// catchCircle code
+  
+  // catchCircle code
   const [catchCircleVisible, setCatchCircleVisible] = useState(false);
-
+  
   const handleHoverStart = () => {
     setCatchCircleVisible(true);
   }
-
+  
   const handleHoverEnd = () => {
     setCatchCircleVisible(false);
   }
-
+  
   const catchCircleVariants = {
     initial: { opacity: 0 },
     animate: { opacity: 1, transition: { duration: 0.5, yoyo: Infinity } },
     exit: { opacity: 0, transition: { duration: 0.2 } }
   }
 
-  // modal code
-  const [modalOpen, setModalOpen] = useState(false);
+  // 모달 code
   const [pokeBallKey, setPokeBallKey] = useState(0); // New state for PokeBall key
-
+  const [contactFormOpen, setContactFormOpen] = useState(false);
+  const openContactForm = () => {
+    setContactFormOpen(true);
+  }
   // set up the refs and measuring functions
   const pokeBallRef = useRef();  // New ref for PokeBall
   const catchCircleRef = useRef();  // New ref for CatchCircle
@@ -167,28 +139,20 @@ const Hire = () => {
     const calculatedDistance = Math.sqrt(
       (pokeBallBounds.left + pokeBallBounds.width / 2 - catchCircleBounds.left - catchCircleBounds.width / 2) ** 2 +
       (pokeBallBounds.top + pokeBallBounds.height / 2 - catchCircleBounds.top - catchCircleBounds.height / 2) ** 2
-    );
-    
-    if (calculatedDistance <= pokeBallBounds.width / 2 + catchCircleBounds.width / 2) {
-      console.log("Pokeball has hit the CatchCircle!");
-
-      // Reset the position of the PokeBall to the initial position
-      setPokeBallPosition(pokeBallInitialPosition);
-
-      // Alert the user in the console
-      console.log("PokeBall and CatchCircle are overlapping!");
-
-      // Open the modal
-      setModalOpen(true);
-
-      // Reset the PokeBall position when the modal opens
-      setPokeBallKey(prevKey => prevKey + 1);
-    }
+      );
+  
+      if (calculatedDistance <= pokeBallBounds.width / 2 + catchCircleBounds.width / 2) {
+        console.log("Pokeball has hit the CatchCircle!");
+      
+        // Reset the position of the PokeBall to the initial position
+        setPokeBallPosition(pokeBallInitialPosition);
+        // Alert the user in the console
+        console.log("PokeBall and CatchCircle are overlapping!");
+      
+        // Reset the PokeBall position when the modal opens
+        setPokeBallKey(prevKey => prevKey + 1);
+      }
   };
-
-  const closeModal = () => {
-    setModalOpen(false);
-  }
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -215,66 +179,52 @@ const Hire = () => {
     const calculatedDistance = Math.sqrt(
       (pokeBallBounds.left + pokeBallBounds.width / 2 - catchCircleBounds.left - catchCircleBounds.width / 2) ** 2 +
       (pokeBallBounds.top + pokeBallBounds.height / 2 - catchCircleBounds.top - catchCircleBounds.height / 2) ** 2
-    );
+      );
   
-    // If the PokeBall is not close enough to the CatchCircle, reset its position
-    if (calculatedDistance > pokeBallBounds.width / 2 + catchCircleBounds.width / 2) {
-      // Reset the position of the PokeBall to the initial position
-      x.set(0);
-      y.set(0);
-    } else {
+    if (calculatedDistance <= pokeBallBounds.width / 2 + catchCircleBounds.width / 2) {
       console.log("Pokeball has hit the CatchCircle!");
   
-      // Open the modal
-      setModalOpen(true);
+      // Open the contact form modal
+      openContactForm();
   
-      // Reset the position of the PokeBall to the initial position
       x.set(0);
       y.set(0);
+  
+      // Reset the PokeBall position when the modal opens
+      setPokeBallKey(prevKey => prevKey + 1);
     }
   };
   return (
     <Wrapper ref={wrapperRef}>
     <PoketBallScreenEffects scale={scale} duration={transitionDuration} />
     <PokeBall
-        ref={pokeBallRef}
-        variants={pokeBallVariants}
-        drag
-        dragConstraints={wrapperRef}
-        dragElastic={1}
-        dragMomentum={true}
-        onHoverStart={handleHoverStart}
-        onHoverEnd={handleHoverEnd}
-        onDrag={handleDrag}
-        onDragEnd={handleDragEnd} // New event handler for dragEnd
-        whileHover="hover"
-        whileDrag="drag"
-        style={{ x, y }} // Updated the style to use motion values
-      />
-     <AnimatePresence>
-      {modalOpen && (
-        <ModalWrapper
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-        >
-          <ModalContent>
-            <CloseButton onClick={closeModal}>Close</CloseButton>
-            <h1>Modal Title</h1>
-            <p>Modal content...</p>
-          </ModalContent>
-        </ModalWrapper>
-      )}
-      {catchCircleVisible && (
-        <CatchCircle 
-        ref={catchCircleRef}
-          variants={catchCircleVariants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-        />
-      )}
-    </AnimatePresence>
+      key={pokeBallKey}
+      ref={pokeBallRef}
+      variants={pokeBallVariants}
+      drag
+      dragConstraints={wrapperRef}
+      dragElastic={1}
+      dragMomentum={true}
+      onHoverStart={handleHoverStart}
+      onHoverEnd={handleHoverEnd}
+      onDrag={handleDrag}
+      onDragEnd={handleDragEnd} // New event handler for dragEnd
+      whileHover="hover"
+      whileDrag="drag"
+      style={{ x, y }} // Updated the style to use motion values
+    />
+<AnimatePresence>
+  {contactFormOpen && <ContactFormModal modalIsOpen={contactFormOpen} setModalIsOpen={setContactFormOpen} />}
+  {catchCircleVisible && (
+    <CatchCircle 
+    ref={catchCircleRef}
+      variants={catchCircleVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+    />
+  )}
+</AnimatePresence>
   </Wrapper>
 );
 };
