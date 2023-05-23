@@ -4,10 +4,19 @@ import styled from 'styled-components'
 import SpaceShipBgImg  from '../assets/images/Background/SpaceShipBg.png'
 // 로고이미지
 import ReactLogo from '../assets/images/Logo/ReactP.png'
+import HtmlLogo from '../assets/images/Logo/HtmlP.png'
 // Bar 이미지
-import Bar1 from '../assets/images/Bar/5.png'
+import Bar1 from '../assets/images/Bar/0.png'
+import Bar2 from '../assets/images/Bar/1.png'
+import Bar3 from '../assets/images/Bar/2.png'
+import Bar4 from '../assets/images/Bar/3.png'
+import Bar5 from '../assets/images/Bar/4.png'
+
 // 컴포넌트
 import Skill from '../components/Skill';
+// hooks
+import useScrollPosition from '../hooks/useScrollPosition'
+
 const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
@@ -48,17 +57,19 @@ const SkillList = styled.div`
   align-items: start;
 `;
 
-function Skills() {
-      return (
-        <Wrapper>
-          <SkillsBox>
-            <Title>Skills</Title>
-              <SkillList>
-              <Skill logoSrc={ReactLogo} text="React.js" barSrc={Bar1} />
-              </SkillList>
-          </SkillsBox>
-        </Wrapper>
-      )
-    }
+function SkillsPaga() {
 
-export default Skills
+  return (
+    <Wrapper>
+      <SkillsBox>
+        <Title>Skills</Title>
+        <SkillList>
+          <Skill logoSrc={ReactLogo} text="React" level={3} />
+          <Skill logoSrc={HtmlLogo} text="HTML" levet={4} />
+        </SkillList>
+      </SkillsBox>
+    </Wrapper>
+  )
+}
+
+export default SkillsPaga;

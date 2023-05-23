@@ -6,7 +6,7 @@ import { FullPage, Slide } from 'react-full-page';
 // 페이지 컴포넌트들
 import Main from "./pages/Main";
 import Project from "./pages/ProjectPage";
-import Skills from "./pages/Skills";
+import SkillsPage from "./pages/SkillsPage";
 import Hire from "./pages/Hire";
 // 상태관리
 import { createSlice, configureStore } from '@reduxjs/toolkit';
@@ -68,15 +68,15 @@ function App() {
             <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
               <Main characterPosition={characterPosition} />
             </motion.div>
-          </Slide>
+          </Slide> */}
           <Slide>
             <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
               <Project characterPosition={characterPosition} />
             </motion.div>
-          </Slide> */}
+          </Slide>
           <Slide>
             <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
-              <Skills characterPosition={characterPosition} />
+              <SkillsPage characterPosition={characterPosition} />
             </motion.div>
           </Slide>
           <Slide>
