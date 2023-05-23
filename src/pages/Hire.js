@@ -214,10 +214,11 @@ const Hire = () => {
       style={{ x, y }} // Updated the style to use motion values
     />
 <AnimatePresence>
-  {contactFormOpen && <ContactFormModal modalIsOpen={contactFormOpen} setModalIsOpen={setContactFormOpen} />}
+  {contactFormOpen && <ContactFormModal key="ContactFormModal" modalIsOpen={contactFormOpen} setModalIsOpen={setContactFormOpen} />}
   {catchCircleVisible && (
     <CatchCircle 
-    ref={catchCircleRef}
+      key="CatchCircle"
+      ref={catchCircleRef}
       variants={catchCircleVariants}
       initial="initial"
       animate="animate"
