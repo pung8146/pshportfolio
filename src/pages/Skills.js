@@ -2,6 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 // 이미지
 import SpaceShipBgImg  from '../assets/images/Background/SpaceShipBg.png'
+// 로고이미지
+import ReactLogo from '../assets/images/Logo/ReactP.png'
+// Bar 이미지
+import Bar1 from '../assets/images/Bar/5.png'
 // 컴포넌트
 import Skill from '../components/Skill';
 const Wrapper = styled.div`
@@ -50,11 +54,7 @@ function Skills() {
           <SkillsBox>
             <Title>Skills</Title>
               <SkillList>
-                <Skill imgSrc="path/to/image1.png" text="React.js" />
-                <Skill imgSrc="path/to/image2.png" text="Node.js" />
-                <Skill imgSrc="path/to/image3.png" text="Express.js" />
-                <Skill imgSrc="path/to/image4.png" text="MongoDB" />
-                <Skill imgSrc="path/to/image5.png" text="SQL" />
+              <Skill logoSrc={ReactLogo} text="React.js" barSrc={Bar1} />
               </SkillList>
           </SkillsBox>
         </Wrapper>
