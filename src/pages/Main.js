@@ -52,7 +52,13 @@ const BackgroundLayer3 = styled(BackgroundLayer1)`
   animation: ${slide} 10s linear infinite;
 `;
 
-
+const Title = styled.h1`
+font-size: 8rem;
+background: #CF0075;
+background: linear-gradient(to top, #CF0075 24%, #FFE600 45%, #CF4C1D 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+`
 
 const StartButton = styled(motion.button)`
 z-index: 10;
@@ -94,6 +100,7 @@ function Main() {
 
 
       <StartButton>
+        <Title>PSH PORTFOLIO</Title>
         <motion.p
           variants={textVariants}
           initial="hidden"

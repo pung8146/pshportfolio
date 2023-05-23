@@ -1,5 +1,6 @@
 import { useState } from "react";
-import styled from "styled-components";
+import styled, { css, keyframes } from 'styled-components';
+
 // img
 import RandomBoxImg from '../assets/images/Object/RandomBox.png'
 import FigmaImg from '../assets/images/Icon/Figma.png'
@@ -28,6 +29,16 @@ const ProjectStyled = styled.div`
     padding: 5px;
   }
 `;
+const fadeOut = keyframes`
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+`;
 const Overlay = styled.div`
   position: absolute;
   top: 0;
@@ -36,10 +47,10 @@ const Overlay = styled.div`
   height: 100%;
   background-image: url(${RandomBoxImg});
   background-size: cover;
-  opacity: ${props => props.clicked ? 0 : 1};
-  transition: opacity 0.5s ease-in-out;
+  animation: ${props => props.clicked ? css`${fadeOut} 0.5s ease-out forwards` : 'none'};
   cursor: pointer;
-  z-index: 1; /* Add this */
+  z-index: 1;
+  display: ${props => props.overlayVisible ? 'block' : 'none'};
 `;
 const ProjectLeftBox = styled.div`
   width: 40%;
@@ -82,19 +93,24 @@ li{
 
 function Project({ bgColor, onClick, visible, projectInfo }) {
   const [clicked, setClicked] = useState(false);
+  const [overlayVisible, setOverlayVisible] = useState(true);
 
   const handleClick = () => {
-    setClicked(!clicked);
+    if (!clicked) {
+      setClicked(true);
+      setTimeout(() => {
+        setClicked(false);
+        setOverlayVisible(false);
+      }, 500); // 애니메이션의 지속 시간에 맞추어 변경
+    }
   };
-
   return (
     <ProjectStyled 
       bgColor={bgColor}
-      onClick={handleClick}
       visible={visible}
     >
-      <Overlay clicked={clicked} onClick={handleClick} />
-      <ProjectLeftBox>
+ <Overlay clicked={clicked} onClick={handleClick} overlayVisible={overlayVisible} />
+         <ProjectLeftBox>
         <div className="ProjectLogo" style={{ backgroundImage: `url(${projectInfo.logoUrl})` }}></div>
         <h1>{projectInfo.name}</h1>
         <h2>{projectInfo.date}</h2>

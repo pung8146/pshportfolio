@@ -68,17 +68,17 @@ function App() {
             <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
               <Main characterPosition={characterPosition} />
             </motion.div>
-          </Slide>
+          </Slide> */}
           <Slide>
             <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
               <Project characterPosition={characterPosition} />
             </motion.div>
-          </Slide> */}
-          {/* <Slide>
+          </Slide>
+          <Slide>
             <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
               <Skiles characterPosition={characterPosition} />
             </motion.div>
-          </Slide> */}
+          </Slide>
           <Slide>
             <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
               <Hire characterPosition={characterPosition} />
