@@ -17,8 +17,8 @@ const SkillItem = styled.div`
 `;
 
 const SkillLogo = styled.img`
-  width: 50px;  // Or whatever size you want
-  height: 50px;
+  width: 100px;  // Or whatever size you want
+  height: 100px;
   margin-right: 1rem;  // Add some space between the logo and the text
 `;
 
@@ -30,6 +30,7 @@ const SkillBar = styled.img`
 
 const SkillText = styled.div`
   // Your styling here
+  font-size: 2rem;
 `;
 
 function Skill({ logoSrc, text, level }) {
