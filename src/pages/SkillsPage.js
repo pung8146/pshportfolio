@@ -60,10 +60,10 @@ const SkillItem = styled.div`
   bottom: 8%;
   animation: ${props => keyframes`
     0% {
-      transform: translate(${props.start.bottom}, ${props.start.left});
+      transform: translate(${props.start.left}, ${props.start.bottom});
     }
     100% {
-      transform: translate(50%, 50%);
+      transform: translate(200%, -200%);
     }
   `} 1s ease forwards;
 `;
@@ -77,15 +77,15 @@ const SkillLogo = styled.img`
   function SkillsPaga() {
     
   const [skills, setSkills] = useState([
-    { logoSrc: HtmlLogo, text: "HTML", level: 5, start: { bottom: '0%', left: '0%' }, end: { row: 1, column: 1 } },
-    { logoSrc: CssLogo, text: "CSS", level: 5, start: { bottom: '10%', left: '0%' }, end: { row: 1, column: 2 } },
-    { logoSrc: ReactLogo, text: "React", level: 4, start: { bottom: '20%', left: '0%' }, end: { row: 1, column: 3 } },
-    { logoSrc: JsLogo, text: "JavaScript", level: 4, start: { bottom: '0%', left: '10%' }, end: { row: 2, column: 1 } },
-    { logoSrc: ReduxLogo, text: "Redux", level: 4, start: { bottom: '10%', left: '10%' }, end: { row: 2, column: 2 } },
+    { logoSrc: HtmlLogo, text: "HTML", level: 5, start: { bottom: '0%', left: '0%' }, end: { bottom: '100%', left: '100%' } },
+    { logoSrc: CssLogo, text: "CSS", level: 5, start: { bottom: '0%', left: '0%' }, end: { bottom: '100%', left: '100%' } },
+    { logoSrc: ReactLogo, text: "React", level: 4, start: { bottom: '0%', left: '0%' }, end: { row: 1, column: 3 } },
+    { logoSrc: JsLogo, text: "JavaScript", level: 4, start: { bottom: '20%', left: '10%' }, end: { row: 2, column: 1 } },
+    { logoSrc: ReduxLogo, text: "Redux", level: 4, start: { bottom: '20%', left: '10%' }, end: { row: 2, column: 2 } },
     { logoSrc: FireBaseLogo, text: "FireBase", level: 3, start: { bottom: '20%', left: '10%' }, end: { row: 2, column: 3 } },
-    { logoSrc: FramerLogo, text: "Framer", level: 3, start: { bottom: '0%', left: '20%' }, end: { row: 3, column: 1 } },
-    { logoSrc: MuiLogo, text: "Material-UI", level: 3, start: { bottom: '10%', left: '20%' }, end: { row: 3, column: 2 } },
-    { logoSrc: StyledLogo, text: "Styled-Components", level: 3, start: { bottom: '20%', left: '20%' }, end: { row: 3, column: 3 } },
+    { logoSrc: FramerLogo, text: "Framer", level: 3, start: { bottom: '30%', left: '20%' }, end: { row: 3, column: 1 } },
+    { logoSrc: MuiLogo, text: "Material-UI", level: 3, start: { bottom: '30%', left: '20%' }, end: { row: 3, column: 2 } },
+    { logoSrc: StyledLogo, text: "Styled-Components", level: 3, start: { bottom: '30%', left: '20%' }, end: { row: 3, column: 3 } },
   ]);
 
   return (
