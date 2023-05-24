@@ -1,7 +1,7 @@
   import React, { useEffect, useState } from 'react'
   import styled from 'styled-components'
   // 이미지
-  import SpaceShipBgImg  from '../assets/images/Background/SpaceShipBg.png'
+  import KirbyBgImg  from '../assets/images/Background/kirbyBackground.png'
   // 로고이미지
   import ReactLogo from '../assets/images/Logo/ReactP.png'
   import HtmlLogo from '../assets/images/Logo/HtmlP.png'
@@ -20,50 +20,41 @@
   import Bar5 from '../assets/images/Bar/4.png'
 
   // 컴포넌트
-  import Skill from '../components/Skill';
-  import TypingTitle from './TypingTitle'
-  import IntroSkill from './IntroSkill'
+
   // hooks
 
 
   const Wrapper = styled.div`
     width: 100%;
     height: 100vh;
-    background-image: url(${SpaceShipBgImg});
+    background-image: url(${KirbyBgImg});
     background-size: cover;
-    background-position: right;
+    background-position: left;
     display: flex;
     justify-content: center;
-    align-items: center;  // This will center the SkillsBox vertically
+    align-items: center;  // This will center the SkillBox vertically
   `;
 
-  const SkillsBox = styled.div`
-    width: 80%;
-    height: 90%;
-    background: rgba(0, 0, 0, 0.5); // Semi-transparent black
-    border: 2px solid #00ff00; // Bright green
-    border-radius: 15px;
-    color: #00ff00; // Bright green
-    margin: 10% 0;
-    padding: 20px;
-    overflow: auto; // Enable scrolling if content overflows
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    align-items: start;
+  const SkillBox = styled.div`
+
+  `;
+  const SkillItem = styled.div`
+    width: 200px;
+    height: 200px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    bottom:8%;
+    left: 20%;
+    border:1px solid blue;
   `;
 
-const SkillList = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-`;
-
-const SkillItem = styled.div`
-  flex: 0 1 calc(33.3333% - 20px);
-  margin-bottom: 20px;
-  box-sizing: border-box;
-`;
+  const SkillLogo = styled.img`
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+  `;
 
 
   function SkillsPaga() {
@@ -79,24 +70,15 @@ const SkillItem = styled.div`
     { logoSrc: FireBaseLogo, text: "FireBase", level: 2 },
   ]);
 
-  // 스킬 목록을 레벨 순서대로 정렬
-  useEffect(() => {
-    setSkills(skills.sort((a, b) => b.level - a.level));
-  }, []);
-
     return (
       <Wrapper>
-      <SkillsBox>
-        <TypingTitle children="Skill" />
-        <SkillList>
-          {skills.map((skill, index) => (
-            <SkillItem key={index}>
-              <Skill logoSrc={skill.logoSrc} text={skill.text} level={skill.level} />
-            </SkillItem>
-          ))}
-        </SkillList>
-        <IntroSkill />
-      </SkillsBox>
+      <SkillBox>
+        {skills.map((skill, index) => (
+          <SkillItem key={index}>
+            <SkillLogo src={skill.logoSrc} alt={skill.text} />
+          </SkillItem>
+        ))}
+      </SkillBox>
     </Wrapper>
     )
   }
