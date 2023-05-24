@@ -63,7 +63,7 @@ const SkillItem = styled.div`
       transform: translate(${props.start.left}, ${props.start.bottom});
     }
     100% {
-      transform: translate(200%, -200%);
+      transform: translate(${props.end.left}, ${props.end.bottom});
     }
   `} 1s ease forwards;
 `;
@@ -77,22 +77,24 @@ const SkillLogo = styled.img`
   function SkillsPaga() {
     
   const [skills, setSkills] = useState([
-    { logoSrc: HtmlLogo, text: "HTML", level: 5, start: { bottom: '0%', left: '0%' }, end: { bottom: '100%', left: '100%' } },
-    { logoSrc: CssLogo, text: "CSS", level: 5, start: { bottom: '0%', left: '0%' }, end: { bottom: '100%', left: '100%' } },
-    { logoSrc: ReactLogo, text: "React", level: 4, start: { bottom: '0%', left: '0%' }, end: { row: 1, column: 3 } },
-    { logoSrc: JsLogo, text: "JavaScript", level: 4, start: { bottom: '20%', left: '10%' }, end: { row: 2, column: 1 } },
-    { logoSrc: ReduxLogo, text: "Redux", level: 4, start: { bottom: '20%', left: '10%' }, end: { row: 2, column: 2 } },
-    { logoSrc: FireBaseLogo, text: "FireBase", level: 3, start: { bottom: '20%', left: '10%' }, end: { row: 2, column: 3 } },
-    { logoSrc: FramerLogo, text: "Framer", level: 3, start: { bottom: '30%', left: '20%' }, end: { row: 3, column: 1 } },
-    { logoSrc: MuiLogo, text: "Material-UI", level: 3, start: { bottom: '30%', left: '20%' }, end: { row: 3, column: 2 } },
-    { logoSrc: StyledLogo, text: "Styled-Components", level: 3, start: { bottom: '30%', left: '20%' }, end: { row: 3, column: 3 } },
-  ]);
+    { logoSrc: HtmlLogo, text: "HTML", level: 5, start: { bottom: '0%', left: '0%' }, end: { bottom: '-300%', left: '100%' } },
+    { logoSrc: CssLogo, text: "CSS", level: 5, start: { bottom: '0%', left: '0%' }, end: { bottom: '-300%', left: '220%' } },
+    { logoSrc: JsLogo, text: "JS", level: 5, start: { bottom: '0%', left: '0%' }, end: { bottom: '-300%', left: '340%' } },
+    { logoSrc: ReactLogo, text: "React", level: 5, start: { bottom: '0%', left: '0%' }, end: { bottom: '-180%', left: '100%' } },
+    { logoSrc: ReduxLogo, text: "Redux", level: 5, start: { bottom: '0%', left: '0%' }, end: { bottom: '-180%', left: '220%' } },
+    { logoSrc: ReduxLogo, text: "Redux", level: 5, start: { bottom: '0%', left: '0%' }, end: { bottom: '-180%', left: '340%' } },
+    { logoSrc: ReduxLogo, text: "Redux", level: 5, start: { bottom: '0%', left: '0%' }, end: { bottom: '-50%', left: '100%' } },
+    { logoSrc: ReduxLogo, text: "Redux", level: 5, start: { bottom: '0%', left: '0%' }, end: { bottom: '-50%', left: '220%' } },
+    { logoSrc: ReduxLogo, text: "Redux", level: 5, start: { bottom: '0%', left: '0%' }, end: { bottom: '-50%', left: '340%' } },
+
+
+  ])
 
   return (
     <Wrapper>
       <SkillBox>
         {skills.map((skill, index) => (
-          <SkillItem key={index} start={skill.start} end={skill.end} style={{ animationDelay: `${index * 1}s` }}>
+          <SkillItem key={index} start={skill.start} end={skill.end} style={{ animationDelay: `${index * 0.5}s` }}>
             <SkillLogo src={skill.logoSrc} alt={skill.text} />
           </SkillItem>
         ))}
