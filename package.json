@@ -2,7 +2,7 @@
   "name": "pshportfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://yourusername.github.io/your-repo",
+  "homepage": "pung8146.github.io/pshportfolio",
   "dependencies": {
     "@fullpage/react-fullpage": "^0.1.39",
     "@reduxjs/toolkit": "^1.9.5",
