@@ -17,8 +17,8 @@ const ProjectStyled = styled.div`
   .ProjectLogo{
     margin: 10%;
     width: 80%;
-    height: 20%;
-    background-color: red;
+    height: 30%;
+    background-size: cover;
   }
   h1{
     font-size: 3rem;

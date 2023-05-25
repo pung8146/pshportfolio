@@ -103,8 +103,6 @@ const SkillLogo = styled.img`
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
-  
-  
 
   return (
     <Wrapper>
