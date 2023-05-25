@@ -21,11 +21,11 @@ const ProjectStyled = styled.div`
     background-color: red;
   }
   h1{
-    font-size: 18px;
+    font-size: 3rem;
     padding: 10px;
   }
   h2{
-    font-size: 16px;
+    font-size: 2rem;
     padding: 5px;
   }
 `;
@@ -80,14 +80,16 @@ div {
   padding: 5%;
   border-radius : 5% ;
   line-height: 1.5;
-  font-size: 10px;
+  font-size: 1.4rem;
 }
 ul{
   display: flex;
   flex-direction: column;
+  text-align: left;
 }
 li{
   padding: 8%;
+  font-size: 2rem;
 }
 `
 
