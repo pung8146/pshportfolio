@@ -1,17 +1,12 @@
-import React, { useEffect, useState,useRef } from 'react';
+import React  from 'react';
 import { motion } from 'framer-motion';
 import styled, { keyframes } from 'styled-components';
-import { Link } from 'react-scroll';
 
 // // img
 import BackgroundImg1 from '../assets/images/Background/OakWood/background_layer_1.png'
 import BackgroundImg2 from '../assets/images/Background/OakWood/background_layer_2.png'
 import BackgroundImg3 from '../assets/images/Background/OakWood/background_layer_3.png'
-// 캐릭터 상태관리
-import { useSelector, useDispatch } from 'react-redux';
-import { startScrolling, stopScrolling } from '../components/Character/characterSlice';
 
-import Character from '../components/Character/Character';
 const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
@@ -53,9 +48,12 @@ const BackgroundLayer3 = styled(BackgroundLayer1)`
 `;
 
 const Title = styled.h1`
-font-size: 8rem;
-background: #CF0075;
-background: linear-gradient(to top, #CF0075 24%, #FFE600 45%, #CF4C1D 100%);
+font-size: 16rem;
+margin: 10% 0;
+background: #0DD7FF;
+background: -webkit-linear-gradient(to left, #0DD7FF 0%, #FFEE00 50%, #FF8800 100%);
+background: -moz-linear-gradient(to left, #0DD7FF 0%, #FFEE00 50%, #FF8800 100%);
+background: linear-gradient(to left, #0DD7FF 0%, #FFEE00 50%, #FF8800 100%);
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
 `
@@ -63,9 +61,9 @@ background: linear-gradient(to top, #CF0075 24%, #FFE600 45%, #CF4C1D 100%);
 const StartButton = styled(motion.button)`
 z-index: 10;
 position: absolute;
-font-family: 'VT323', cursive;
+cursor: default;
 p{
-  font-size: 4rem;
+  font-size: 8rem;
   background: #FFE226;
   background: linear-gradient(to bottom, #FFE226 32%, #FF9A03 50%, #CF2525 68%);
   -webkit-background-clip: text;
@@ -78,11 +76,10 @@ p{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  &:hover {
+  /* &:hover {
     transition: all 0.3s ease;
-    text-shadow: 0 0 10px #cf2525, 0 0 40px #cf2525, 0 0 80px #cf2525;
-  }
-
+    text-shadow: 0 0 10px #FF8800, 0 0 40px #FFF7AB, 0 0 80px #FF8800;
+  } */
 `;
 
 const textVariants = {
@@ -105,17 +102,18 @@ function Main() {
           variants={textVariants}
           initial="hidden"
           animate="visible"
-          transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+          // transition={{ duration: 1, repeat: Infinity, repeatType: "reverse" }}
         >
-          CLICK or SCROLL
+          FrontEndDeveloper
         </motion.p>
+        
         <motion.span
           variants={textVariants}
           initial="hidden"
           animate="visible"
-          transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+          transition={{ duration: 0.8, repeat: Infinity, repeatType: "reverse" }}
         >
-          START
+          START SCROLL
         </motion.span>
       </StartButton>
     </Wrapper>

@@ -2,7 +2,14 @@ import { createGlobalStyle } from "styled-components";
  
 const GlobalStyles = createGlobalStyle`
  @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-    a{
+ @font-face {
+    font-family: 'NeoDunggeunmoPro-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/NeoDunggeunmoPro-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+ a{
         text-decoration: none;
         color: inherit;
     }
@@ -16,11 +23,11 @@ const GlobalStyles = createGlobalStyle`
         border: 0;
         font-size: 10px;
         vertical-align: baseline;
-        font-family: 'VT323', cursive;
+        font-family: 'NeoDunggeunmoPro-Regular', sans-serif;
     }
     body{
         line-height: 1;
-        font-family: 'VT323', cursive;
+        font-family: 'NeoDunggeunmoPro-Regular', sans-serif;
         font-family: 'Noto Sans KR', sans-serif;
         background-color: #F6F9F0;
     }

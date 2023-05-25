@@ -1,4 +1,4 @@
-  import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
   import styled, { keyframes } from 'styled-components'
   // 이미지
   import KirbyBgImg  from '../assets/images/Background/kirbyBackground.png'
@@ -40,7 +40,6 @@ const SkillBox = styled.div`
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
   gap: 20px;
-  border: 1px solid blue;
   width:80%;
   height: 100vh;
   justify-items: center;
@@ -58,23 +57,25 @@ const SkillItem = styled.div`
   position: absolute;
   left: 13%;
   bottom: 8%;
-  animation: ${props => keyframes`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: ${props => props.animate ? keyframes`
     0% {
       transform: translate(${props.start.left}, ${props.start.bottom});
     }
     100% {
       transform: translate(${props.end.left}, ${props.end.bottom});
     }
-  `} 1s ease forwards;
+  ` : 'none'} 1s ease forwards;
 `;
-
 const SkillLogo = styled.img`
   width: 100px;
   height: 100px;
   margin: 0 auto;
 `;
 
-  function SkillsPaga() {
+  function SkillPage() {
     
   const [skills, setSkills] = useState([
     { logoSrc: HtmlLogo, text: "HTML", level: 5, start: { bottom: '0%', left: '0%' }, end: { bottom: '-300%', left: '100%' } },
@@ -87,19 +88,40 @@ const SkillLogo = styled.img`
     { logoSrc: ReduxLogo, text: "Redux", level: 5, start: { bottom: '0%', left: '0%' }, end: { bottom: '-50%', left: '220%' } },
     { logoSrc: ReduxLogo, text: "Redux", level: 5, start: { bottom: '0%', left: '0%' }, end: { bottom: '-50%', left: '340%' } },
 
-
   ])
+
+  const [animate, setAnimate] = useState(false);
+  const skillBoxRef = useRef();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const skillBoxTop = skillBoxRef.current.getBoundingClientRect().top;
+      if (skillBoxTop <= window.innerHeight) {
+        setAnimate(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <Wrapper>
-      <SkillBox>
-        {skills.map((skill, index) => (
-          <SkillItem key={index} start={skill.start} end={skill.end} style={{ animationDelay: `${index * 0.5}s` }}>
-            <SkillLogo src={skill.logoSrc} alt={skill.text} />
-          </SkillItem>
-        ))}
-      </SkillBox>
-    </Wrapper>
+    <SkillBox ref={skillBoxRef}>
+      {skills.map((skill, index) => (
+        <SkillItem
+          key={index}
+          start={skill.start}
+          end={skill.end}
+          animate={animate}
+          style={{ animationDelay: `${index * 0.5}s` }}
+        >
+          <SkillLogo src={skill.logoSrc} alt={skill.text} />
+        </SkillItem>
+      ))}
+    </SkillBox>
+  </Wrapper>
   );
 }
-  export default SkillsPaga;
+
+export default SkillPage;
