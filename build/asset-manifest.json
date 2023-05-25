@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.js": "/static/js/main.0356a0c7.js",
+    "static/media/pokeBackground.jpg": "/static/media/pokeBackground.31c646c2890403127351.jpg",
+    "static/media/result.gif": "/static/media/result.4c87d3838e712347ad66.gif",
+    "static/media/Pipe.png": "/static/media/Pipe.b025d06611490653901a.png",
+    "static/media/DarkPoketBall.png": "/static/media/DarkPoketBall.63b66f163dccda808242.png",
+    "static/media/kirbyBackground.png": "/static/media/kirbyBackground.9d45573f59854a9db0ec.png",
+    "static/media/MuiP.png": "/static/media/MuiP.6069dfa44932b797c8b9.png",
+    "static/media/JsP.png": "/static/media/JsP.411ed5cfa398b7750082.png",
+    "static/media/FireBaseP.png": "/static/media/FireBaseP.5adcae29677d9c4b7a1c.png",
+    "static/media/StyledP.png": "/static/media/StyledP.5b4631e4daea63660f4c.png",
+    "static/media/ProjectTitleImg.png": "/static/media/ProjectTitleImg.4d32a5dcd095d1f8c8c9.png",
+    "static/media/background_layer_3.png": "/static/media/background_layer_3.3b5e7620dab43de116de.png",
+    "static/media/Figma.png": "/static/media/Figma.72fbc535ebe253a5dbc4.png",
+    "static/media/Sheet.png": "/static/media/Sheet.7a2eacff25cab2427dd7.png",
+    "static/media/FramerP.png": "/static/media/FramerP.1825d4c74c1318f0c997.png",
+    "index.html": "/index.html",
+    "main.0356a0c7.js.map": "/static/js/main.0356a0c7.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.0356a0c7.js"
+  ]
+}
