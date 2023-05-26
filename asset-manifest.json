@@ -1,24 +1,29 @@
 {
   "files": {
-    "main.js": "/pshportfolio/static/js/main.59de4550.js",
+    "main.js": "/pshportfolio/static/js/main.57357de1.js",
+    "static/media/BubbleBobbleBg.png": "/pshportfolio/static/media/BubbleBobbleBg.7d501688682d932236bf.png",
     "static/media/pokeBackground.jpg": "/pshportfolio/static/media/pokeBackground.31c646c2890403127351.jpg",
     "static/media/result.gif": "/pshportfolio/static/media/result.4c87d3838e712347ad66.gif",
     "static/media/Pipe.png": "/pshportfolio/static/media/Pipe.b025d06611490653901a.png",
     "static/media/DarkPoketBall.png": "/pshportfolio/static/media/DarkPoketBall.63b66f163dccda808242.png",
-    "static/media/kirbyBackground.png": "/pshportfolio/static/media/kirbyBackground.9d45573f59854a9db0ec.png",
+    "static/media/bubbleR.png": "/pshportfolio/static/media/bubbleR.a20bef51bfbd793d2013.png",
+    "static/media/bubbleG.png": "/pshportfolio/static/media/bubbleG.7ed026be7c08aca4b6b4.png",
+    "static/media/bubbleB.png": "/pshportfolio/static/media/bubbleB.d491480b39382158f95e.png",
     "static/media/MuiP.png": "/pshportfolio/static/media/MuiP.6069dfa44932b797c8b9.png",
     "static/media/JsP.png": "/pshportfolio/static/media/JsP.411ed5cfa398b7750082.png",
+    "static/media/beer.png": "/pshportfolio/static/media/beer.a70700b325eda70590bf.png",
     "static/media/FireBaseP.png": "/pshportfolio/static/media/FireBaseP.5adcae29677d9c4b7a1c.png",
     "static/media/StyledP.png": "/pshportfolio/static/media/StyledP.5b4631e4daea63660f4c.png",
+    "static/media/stackoverflow.png": "/pshportfolio/static/media/stackoverflow.0123b8df35f2e7d20bc8.png",
     "static/media/ProjectTitleImg.png": "/pshportfolio/static/media/ProjectTitleImg.4d32a5dcd095d1f8c8c9.png",
     "static/media/background_layer_3.png": "/pshportfolio/static/media/background_layer_3.3b5e7620dab43de116de.png",
     "static/media/Figma.png": "/pshportfolio/static/media/Figma.72fbc535ebe253a5dbc4.png",
     "static/media/Sheet.png": "/pshportfolio/static/media/Sheet.7a2eacff25cab2427dd7.png",
     "static/media/FramerP.png": "/pshportfolio/static/media/FramerP.1825d4c74c1318f0c997.png",
     "index.html": "/pshportfolio/index.html",
-    "main.59de4550.js.map": "/pshportfolio/static/js/main.59de4550.js.map"
+    "main.57357de1.js.map": "/pshportfolio/static/js/main.57357de1.js.map"
   },
   "entrypoints": [
-    "static/js/main.59de4550.js"
+    "static/js/main.57357de1.js"
   ]
 }
