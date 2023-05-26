@@ -102,32 +102,41 @@ const SkillLogo = styled.img`
     const handleScroll = () => {
       const skillBoxBottom = skillBoxRef.current.getBoundingClientRect().bottom;
       if (skillBoxBottom <= window.innerHeight) {
-        setAnimate(true);
+        if (!animate) {
+          setAnimate(true);
+          console.log("Animation has started!");
+        }
+      } else {
+        if (animate) {
+          setAnimate(false);
+          console.log("Animation has stopped!");
+        }
       }
     };
-  
+    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [animate]);  // animate is added to the dependency array
+
   
 
   return (
     <Wrapper>
-    <SkillBox ref={skillBoxRef}>
-      {skills.map((skill, index) => (
-        <SkillItem
-          key={index}
-          start={skill.start}
-          end={skill.end}
-          animate={animate}
-          level={skill.level}
-          style={{ animationDelay: `${index * 0.5}s` }}
-        >
-          <SkillLogo src={skill.logoSrc} alt={skill.text} />
-        </SkillItem>
-      ))}
-    </SkillBox>
-  </Wrapper>
+      <SkillBox ref={skillBoxRef}>
+        {skills.map((skill, index) => (
+          <SkillItem
+            key={index}
+            start={skill.start}
+            end={skill.end}
+            animate={animate}
+            level={skill.level}
+            style={{ animationDelay: `${index * 0.5}s` }}
+          >
+            <SkillLogo src={skill.logoSrc} alt={skill.text} />
+          </SkillItem>
+        ))}
+      </SkillBox>
+    </Wrapper>
   );
 }
 
