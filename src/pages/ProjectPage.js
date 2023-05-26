@@ -63,7 +63,7 @@ function ProjectPage() {
               logoUrl: PixelPortfolioLogo,
               introduction: "Pixel Art 의 컨셉으로 제작중인 포트폴리오 입니다.",
               serviceDescriptions: [
-                {description: "캐릭터 컴포넌트의 재사용을 위해 Redux를 사용하였습니다.", url: ""},
+                {description: "Redux 를 사용하여 컴포넌트간의 상태 관리를 하고 있습니다.", url: ""},
                 {description: "인터렉티브 웹 구현을 위해 Framer-motion 을 사용하였습니다.", url: ""},
                 // {description: "서비스 소개 3", url: "https://link-for-service-3.com"}
               ]

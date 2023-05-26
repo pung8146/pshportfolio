@@ -50,9 +50,9 @@ const SkillItem = styled.div`
       case 1:
         return `url(${BubbleRedImg})`;
       case 2:
-        return `url(${BubbleGreenImg})`;
-      case 3:
         return `url(${BubbleBlueImg})`;
+      case 3:
+        return `url(${BubbleGreenImg})`;
       default:
         return `url(${BubbleRedImg})`;
     }

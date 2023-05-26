@@ -58,14 +58,23 @@ const CatchCircle = styled(motion.div)`
   bottom: 5%;
   animation: ${flashingBorder} 1s linear infinite; // 반짝이는 효과 적용
 `;
-
+const gradientShift = keyframes`
+  0% { background-position: 0% 50%; }
+  50% { background-position: 50% 50%; }
+  100% { background-position: 0% 50%; }
+`;
 const CatchText = styled(motion.p)`
   font-size: 8rem;
   font-weight: bold;
   color: white;
   position: absolute;
   left: 17%;
-  bottom: 35%;
+  bottom: 40%;
+  background: linear-gradient(270deg,  #CFCFCF 0%, #FF4255 50%, #FFED45 100%); 
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: ${gradientShift} 2s linear infinite;
 `
 
 const pokeBallVariants = {
@@ -230,7 +239,7 @@ const Hire = () => {
     />
 <AnimatePresence>
   {contactFormOpen && <ContactFormModal key="ContactFormModal" modalIsOpen={contactFormOpen} setModalIsOpen={setContactFormOpen} />}
-  <CatchText>Catch Me?</CatchText>
+  <CatchText>CATCH ME!</CatchText>
   {catchCircleVisible && (
     <CatchCircle 
       key="CatchCircle"
