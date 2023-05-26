@@ -6,6 +6,7 @@ import RandomBoxImg from '../assets/images/Object/RandomBox.png'
 import FigmaImg from '../assets/images/Icon/Figma.png'
 import GithubImg from '../assets/images/Icon/Github.png'
 import SheetImg from '../assets/images/Icon/Sheet.png'
+import PageImg from '../assets/images/Logo/psh.png'
   
 const ProjectStyled = styled.div`
   position: relative; /* Add this */
@@ -135,6 +136,13 @@ function Project({ bgColor, onClick, visible, projectInfo }) {
             <li>
               <a href={projectInfo.sheetUrl} target="_blank" rel="noreferrer">
                 <img src={SheetImg} alt="정의서"/>
+              </a>
+            </li>
+          )}
+          {projectInfo.pageUrl && (
+            <li>
+              <a href={projectInfo.pageUrl} target="_blank" rel="noreferrer">
+                <img src={PageImg} alt="링크"/>
               </a>
             </li>
           )}

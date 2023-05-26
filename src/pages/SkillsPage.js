@@ -13,13 +13,9 @@ import React, { useEffect, useRef, useState } from 'react'
   import ReduxLogo from '../assets/images/PixelLogo/ReduxP.png'
   import StyledLogo from '../assets/images/PixelLogo/StyledP.png'
   // bubble 이미지
-  import Bubble from '../assets/images/Bubble/bubble5.png'
-
-
-  // 컴포넌트
-
-  // hooks
-
+  import BubbleRedImg from '../assets/images/Bubble/bubbleR.png'
+  import BubbleGreenImg from '../assets/images/Bubble/bubbleG.png'
+  import BubbleBlueImg from '../assets/images/Bubble/bubbleB.png'
 
   const Wrapper = styled.div`
   width: 100%;
@@ -49,7 +45,18 @@ const SkillItem = styled.div`
   height: 200px;
   text-align: center;
   border-radius: 50%;
-  background-image: url(${Bubble});
+  background-image: ${props => {
+    switch (props.level) {
+      case 1:
+        return `url(${BubbleRedImg})`;
+      case 2:
+        return `url(${BubbleGreenImg})`;
+      case 3:
+        return `url(${BubbleBlueImg})`;
+      default:
+        return `url(${BubbleRedImg})`;
+    }
+  }};
   background-size: cover;
   position: absolute;
   left: 13%;
@@ -76,15 +83,15 @@ const SkillLogo = styled.img`
   function SkillPage() {
     
   const [skills, setSkills] = useState([
-    { logoSrc: HtmlLogo, text: "HTML", level: 5, start: { bottom: '0%', left: '0%' }, end: { bottom: '-300%', left: '140%' } },
-    { logoSrc: CssLogo, text: "CSS", level: 5, start: { bottom: '0%', left: '0%' }, end: { bottom: '-300%', left: '260%' } },
-    { logoSrc: JsLogo, text: "JS", level: 5, start: { bottom: '0%', left: '0%' }, end: { bottom: '-300%', left: '380%' } },
-    { logoSrc: ReactLogo, text: "React", level: 5, start: { bottom: '0%', left: '0%' }, end: { bottom: '-180%', left: '140%' } },
-    { logoSrc: ReduxLogo, text: "Redux", level: 5, start: { bottom: '0%', left: '0%' }, end: { bottom: '-180%', left: '260%' } },
-    { logoSrc: ReduxLogo, text: "Redux", level: 5, start: { bottom: '0%', left: '0%' }, end: { bottom: '-180%', left: '380%' } },
-    { logoSrc: ReduxLogo, text: "Redux", level: 5, start: { bottom: '0%', left: '0%' }, end: { bottom: '-50%', left: '140%' } },
-    { logoSrc: ReduxLogo, text: "Redux", level: 5, start: { bottom: '0%', left: '0%' }, end: { bottom: '-50%', left: '260%' } },
-    { logoSrc: ReduxLogo, text: "Redux", level: 5, start: { bottom: '0%', left: '0%' }, end: { bottom: '-50%', left: '380%' } },
+    { logoSrc: HtmlLogo, text: "HTML", level: 1, start: { bottom: '0%', left: '0%' }, end: { bottom: '-270%', left: '140%' } },
+    { logoSrc: CssLogo, text: "CSS", level: 1, start: { bottom: '0%', left: '0%' }, end: { bottom: '-270%', left: '260%' } },
+    { logoSrc: JsLogo, text: "JS", level: 1, start: { bottom: '0%', left: '0%' }, end: { bottom: '-270%', left: '380%' } },
+    { logoSrc: ReactLogo, text: "React", level: 2, start: { bottom: '0%', left: '0%' }, end: { bottom: '-150%', left: '140%' } },
+    { logoSrc: ReduxLogo, text: "Redux", level: 2, start: { bottom: '0%', left: '0%' }, end: { bottom: '-150%', left: '260%' } },
+    { logoSrc: ReduxLogo, text: "Redux", level: 2, start: { bottom: '0%', left: '0%' }, end: { bottom: '-150%', left: '380%' } },
+    { logoSrc: ReduxLogo, text: "Redux", level: 3, start: { bottom: '0%', left: '0%' }, end: { bottom: '-20%', left: '140%' } },
+    { logoSrc: ReduxLogo, text: "Redux", level: 3, start: { bottom: '0%', left: '0%' }, end: { bottom: '-20%', left: '260%' } },
+    { logoSrc: ReduxLogo, text: "Redux", level: 3, start: { bottom: '0%', left: '0%' }, end: { bottom: '-20%', left: '380%' } },
 
   ])
 
@@ -113,6 +120,7 @@ const SkillLogo = styled.img`
           start={skill.start}
           end={skill.end}
           animate={animate}
+          level={skill.level}
           style={{ animationDelay: `${index * 0.5}s` }}
         >
           <SkillLogo src={skill.logoSrc} alt={skill.text} />

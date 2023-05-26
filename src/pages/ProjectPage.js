@@ -9,7 +9,7 @@ import ProjectTitleImg from "../assets/images/Object/ProjectTitleImg.png";
 import MarioBackgroundImg from "../assets/images/Background/MarioBackground.png";
 import StackOverFlowLogo from "../assets/images/Logo/stackoverflow.png";
 import BeerLogo from "../assets/images/Logo/beer.png";
-import PixelPortfolioLogo from "../assets/images/Logo/logo512.png";
+import PixelPortfolioLogo from "../assets/images/Logo/psh.png";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -58,9 +58,10 @@ function ProjectPage() {
             projectInfo={{
               name: "PixelPortfolio",
               date: "2023-진행중",
-              githubUrl: "https://github.com/example",
+              githubUrl: "https://github.com/pung8146/pshportfolio",
+              pageUrl: "https://pung8146.github.io/pshportfolio/",
               logoUrl: PixelPortfolioLogo,
-              introduction: "Pixel Art 의 컨셉으로 제작한 포트폴리오 입니다.",
+              introduction: "Pixel Art 의 컨셉으로 제작중인 포트폴리오 입니다.",
               serviceDescriptions: ["서비스 소개 1", "서비스 소개 2", "서비스 소개 3"]
             }}
           />
