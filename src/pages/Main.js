@@ -1,7 +1,7 @@
 import React  from 'react';
 import { motion } from 'framer-motion';
 import styled, { keyframes } from 'styled-components';
-
+import { device } from '../style/mediaQueries'
 // // img
 import BackgroundImg1 from '../assets/images/Background/OakWood/background_layer_1.png'
 import BackgroundImg2 from '../assets/images/Background/OakWood/background_layer_2.png'

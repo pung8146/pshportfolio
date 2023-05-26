@@ -89,11 +89,11 @@ const SkillLogo = styled.img`
     { logoSrc: CssLogo, text: "CSS", level: 1, start: { bottom: '0%', left: '0%' }, end: { bottom: '-270%', left: '260%' } },
     { logoSrc: JsLogo, text: "JS", level: 1, start: { bottom: '0%', left: '0%' }, end: { bottom: '-270%', left: '380%' } },
     { logoSrc: ReactLogo, text: "React", level: 2, start: { bottom: '0%', left: '0%' }, end: { bottom: '-150%', left: '140%' } },
-    { logoSrc: ReduxLogo, text: "Redux", level: 2, start: { bottom: '0%', left: '0%' }, end: { bottom: '-150%', left: '260%' } },
-    { logoSrc: ReduxLogo, text: "Redux", level: 2, start: { bottom: '0%', left: '0%' }, end: { bottom: '-150%', left: '380%' } },
+    { logoSrc: FramerLogo, text: "Redux", level: 2, start: { bottom: '0%', left: '0%' }, end: { bottom: '-150%', left: '260%' } },
+    { logoSrc: StyledLogo, text: "Redux", level: 2, start: { bottom: '0%', left: '0%' }, end: { bottom: '-150%', left: '380%' } },
     { logoSrc: ReduxLogo, text: "Redux", level: 3, start: { bottom: '0%', left: '0%' }, end: { bottom: '-20%', left: '140%' } },
-    { logoSrc: ReduxLogo, text: "Redux", level: 3, start: { bottom: '0%', left: '0%' }, end: { bottom: '-20%', left: '260%' } },
-    { logoSrc: ReduxLogo, text: "Redux", level: 3, start: { bottom: '0%', left: '0%' }, end: { bottom: '-20%', left: '380%' } },
+    { logoSrc: FireBaseLogo, text: "Redux", level: 3, start: { bottom: '0%', left: '0%' }, end: { bottom: '-20%', left: '260%' } },
+    { logoSrc: MuiLogo, text: "Redux", level: 3, start: { bottom: '0%', left: '0%' }, end: { bottom: '-20%', left: '380%' } },
 
   ])
 
