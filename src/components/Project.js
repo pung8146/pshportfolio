@@ -10,7 +10,6 @@ import PageImg from '../assets/images/Logo/psh.png'
   
 const ProjectStyled = styled.div`
   position: relative; /* Add this */
-  cursor: pointer;
   display: flex;
   width:32%;
   height: 100%;
@@ -89,8 +88,16 @@ ul{
   text-align: left;
 }
 li{
-  padding: 8%;
+  padding: 4%;
   font-size: 2rem;
+}
+a.link-button {
+  display: inline-block;
+  padding: 10px;
+  background-color: #007BFF;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
 }
 `
 
@@ -151,7 +158,16 @@ function Project({ bgColor, onClick, visible, projectInfo }) {
       <ProjectRightBox>
         <div className="introductionService">{projectInfo.introduction}</div>
         <ul>
-          {projectInfo.serviceDescriptions.map((desc, index) => <li key={index}>▶ {desc}</li>)}
+          {projectInfo.serviceDescriptions.map((desc, index) => (
+            <li key={index}>
+              ▶{desc.description} 
+              {desc.url && 
+                <a href={desc.url} target="_blank" rel="noopener noreferrer" className="link-button">
+                  Link
+                </a>
+              }
+            </li>
+          ))}
         </ul>
       </ProjectRightBox>
     </ProjectStyled>

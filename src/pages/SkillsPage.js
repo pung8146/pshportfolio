@@ -64,15 +64,17 @@ const SkillItem = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-animation: ${props => props.animate ? keyframes`
+  animation-name: ${props => props.animate ? keyframes`
   0% {
     transform: translate(${props.start.left}, ${props.start.bottom});
   }
   100% {
     transform: translate(${props.end.left}, ${props.end.bottom});
   }
-` : 'none'} 1s ease forwards;
-
+` : 'none'};
+animation-duration: 1s;
+animation-timing-function: ease;
+animation-fill-mode: forwards;
 `;
 const SkillLogo = styled.img`
   width: 100px;
@@ -106,19 +108,12 @@ const SkillLogo = styled.img`
           setAnimate(true);
           console.log("Animation has started!");
         }
-      } else {
-        if (animate) {
-          setAnimate(false);
-          console.log("Animation has stopped!");
-        }
       }
     };
-    
+  
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [animate]);  // animate is added to the dependency array
-
-  
+  }, [animate]);
 
   return (
     <Wrapper>
