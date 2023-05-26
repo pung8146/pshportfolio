@@ -56,15 +56,17 @@ const pageTransition = {
 
 function App() {
   const [characterPosition, setCharacterPosition] = useState(0);
-
-  const handleBeforeChange = (current, next) => {
+  const totalSlides = 4;  // 슬라이드 총 개수
+  const handleBeforeChange = (current) => {
+    const next = (current.to + 1) % totalSlides;
     setCharacterPosition(next);
   };
+  
   return (
     <Provider store={store}>
       <Body>
         <FullPage beforeChange={handleBeforeChange}>
-          <Slide>
+          {/* <Slide>
             <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
               <Main characterPosition={characterPosition} />
             </motion.div>
@@ -78,7 +80,7 @@ function App() {
             <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
               <SkillsPage characterPosition={characterPosition} />
             </motion.div>
-          </Slide>
+          </Slide> */}
           <Slide>
             <motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}>
               <Hire characterPosition={characterPosition} />

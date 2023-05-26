@@ -59,6 +59,14 @@ const CatchCircle = styled(motion.div)`
   animation: ${flashingBorder} 1s linear infinite; // 반짝이는 효과 적용
 `;
 
+const CatchText = styled(motion.p)`
+  font-size: 8rem;
+  font-weight: bold;
+  color: white;
+  position: absolute;
+  left: 17%;
+  bottom: 35%;
+`
 
 const pokeBallVariants = {
   hover: { scale: 1.2 },
@@ -203,7 +211,7 @@ const Hire = () => {
   };
   return (
     <Wrapper ref={wrapperRef}>
-    <PoketBallScreenEffects scale={scale} duration={transitionDuration} />
+    {/* <PoketBallScreenEffects scale={scale} duration={transitionDuration} /> */}
     <PokeBall
       key={pokeBallKey}
       ref={pokeBallRef}
@@ -222,6 +230,7 @@ const Hire = () => {
     />
 <AnimatePresence>
   {contactFormOpen && <ContactFormModal key="ContactFormModal" modalIsOpen={contactFormOpen} setModalIsOpen={setContactFormOpen} />}
+  <CatchText>Catch Me?</CatchText>
   {catchCircleVisible && (
     <CatchCircle 
       key="CatchCircle"

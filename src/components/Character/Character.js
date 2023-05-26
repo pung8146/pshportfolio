@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 // import CharacterGif from '../../assets/images/Me/MeGif.gif';
 import CharacterGif from '../../assets/images/Me/MeGif.gif';
-import MarioMe from '../../assets/images/Me/MarioMe.png';
-import PoketMe from '../../assets/images/Me/PoketMe.png';
-import DinoMe from '../../assets/images/Me/DinoMe.png';
+
 
 
 const CharacterDiv = styled.div`
