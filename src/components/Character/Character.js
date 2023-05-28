@@ -12,25 +12,41 @@ const CharacterDiv = styled.div`
   bottom: ${props => props.isScrolling ? '-100%' : '10%'}; 
   transition: bottom 0.2s ease-in;
 
-  @media ${device.mobile} {
+  @media ${device.mobileL} {
     width: 50px;
     height: 50px;
+    background-color: purple;
   }
 
   @media ${device.tablet} {
-    width: 100px;
-    height: 100px;
-    background-color: red;
+    width: 75px;
+    height: 75px;
+    background-color: blue;
   }
 
   @media ${device.laptop} {
+    width: 125px;
+    height: 125px;
+    background-color: green;
+    left:10%;
+  }
+
+  @media ${device.laptopL} {
     width: 150px;
     height: 150px;
+    background-color: yellow;
   }
 
   @media ${device.desktop} {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
+    background-color: orange;
+  }
+
+  @media ${device.desktopL} {
+    width: 300px;
+    height: 300px;
+    background-color: red;
   }
 `;
 

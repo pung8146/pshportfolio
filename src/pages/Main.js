@@ -1,12 +1,12 @@
 import React  from 'react';
 import { motion } from 'framer-motion';
 import styled, { keyframes } from 'styled-components';
-import { device } from '../style/mediaQueries'
 // // img
 import BackgroundImg1 from '../assets/images/Background/OakWood/background_layer_1.png'
 import BackgroundImg2 from '../assets/images/Background/OakWood/background_layer_2.png'
 import BackgroundImg3 from '../assets/images/Background/OakWood/background_layer_3.png'
-
+// 스타일
+import { device } from '../style/mediaQueries';
 const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
@@ -56,6 +56,29 @@ background: -moz-linear-gradient(to left, #0DD7FF 0%, #FFEE00 50%, #FF8800 100%)
 background: linear-gradient(to left, #0DD7FF 0%, #FFEE00 50%, #FF8800 100%);
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
+@media ${device.mobileL} {
+    font-size: 6rem;
+  }
+
+  @media ${device.tablet} {
+    font-size: 9rem;
+  }
+
+  @media ${device.laptop} {
+
+  }
+
+  @media ${device.laptopL} {
+
+  }
+
+  @media ${device.desktop} {
+
+  }
+
+  @media ${device.desktopL} {
+
+  }
 `
 
 const StartButton = styled(motion.button)`
@@ -76,10 +99,30 @@ p{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  /* &:hover {
-    transition: all 0.3s ease;
-    text-shadow: 0 0 10px #FF8800, 0 0 40px #FFF7AB, 0 0 80px #FF8800;
-  } */
+  @media ${device.mobileL} {
+
+  }
+
+  @media ${device.tablet} {
+    font-size: 9rem;
+    margin-right:10%;
+  }
+
+  @media ${device.laptop} {
+
+  }
+
+  @media ${device.laptopL} {
+
+  }
+
+  @media ${device.desktop} {
+
+  }
+
+  @media ${device.desktopL} {
+
+  }
 `;
 
 const textVariants = {
