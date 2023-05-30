@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled, { css, keyframes } from 'styled-components';
+import { device } from '../style/mediaQueries';
 
 // img
 import RandomBoxImg from '../assets/images/Object/RandomBox.png'
@@ -67,6 +68,23 @@ const ProjectLeftBox = styled.div`
   img{
     max-width:100%;
   }
+
+  @media ${device.laptopL} {
+    h1{
+      font-size: 20px;
+    }
+    .ProjectLogo{
+      width: 90%;
+      margin:10% auto;
+      height: 200px;
+      background-position: center;
+      img{
+        max-width:100%;
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+  }
 `
 const ProjectRightBox = styled.div`
 width: 60%;
@@ -74,7 +92,7 @@ height: 100%;
 background-color: skyblue;
 div {
   width:80%;
-  height: 20%;
+  height: 25%;
   background-color: white;
   margin:5% 10%;
   padding: 5%;

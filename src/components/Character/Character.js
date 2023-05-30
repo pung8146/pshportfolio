@@ -8,7 +8,7 @@ const CharacterDiv = styled.div`
   background-image: url(${CharacterGif});
   background-size: cover;
   position: fixed;
-  left: 20%;
+  left: 25%;
   bottom: ${props => props.isScrolling ? '-100%' : '10%'}; 
   transition: bottom 0.2s ease-in;
 
@@ -25,28 +25,30 @@ const CharacterDiv = styled.div`
   }
 
   @media ${device.laptop} {
-    width: 125px;
-    height: 125px;
-    background-color: green;
-    left:10%;
+    width: 150px;
+    height: 150px;
+    background-color: transparent;
+    left:17.5%;
   }
 
   @media ${device.laptopL} {
-    width: 150px;
-    height: 150px;
-    background-color: yellow;
+    width: 200px;
+    height: 200px;
+    background-color: transparent;
+    /* background-color: yellow; */
+    left:19.5%;
   }
 
   @media ${device.desktop} {
-    width: 150px;
-    height: 150px;
-    background-color: orange;
+    width: 200px;
+    height: 200px;
+    background-color: transparent;
   }
 
   @media ${device.desktopL} {
     width: 300px;
     height: 300px;
-    background-color: red;
+    background-color: transparent;
   }
 `;
 
