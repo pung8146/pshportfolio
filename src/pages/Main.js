@@ -1,11 +1,11 @@
-import React  from 'react';
-import { motion } from 'framer-motion';
-import styled, { keyframes } from 'styled-components';
-import { device } from '../style/mediaQueries'
+import React from "react";
+import { motion } from "framer-motion";
+import styled, { keyframes } from "styled-components";
+import { device } from "../style/mediaQueries";
 // // img
-import BackgroundImg1 from '../assets/images/Background/OakWood/background_layer_1.png'
-import BackgroundImg2 from '../assets/images/Background/OakWood/background_layer_2.png'
-import BackgroundImg3 from '../assets/images/Background/OakWood/background_layer_3.png'
+import BackgroundImg1 from "../assets/images/Background/OakWood/background_layer_1.png";
+import BackgroundImg2 from "../assets/images/Background/OakWood/background_layer_2.png";
+import BackgroundImg3 from "../assets/images/Background/OakWood/background_layer_3.png";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -48,31 +48,51 @@ const BackgroundLayer3 = styled(BackgroundLayer1)`
 `;
 
 const Title = styled.h1`
-font-size: 16rem;
-margin: 10% 0;
-background: #0DD7FF;
-background: -webkit-linear-gradient(to left, #0DD7FF 0%, #FFEE00 50%, #FF8800 100%);
-background: -moz-linear-gradient(to left, #0DD7FF 0%, #FFEE00 50%, #FF8800 100%);
-background: linear-gradient(to left, #0DD7FF 0%, #FFEE00 50%, #FF8800 100%);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-`
-
-const StartButton = styled(motion.button)`
-z-index: 10;
-position: absolute;
-cursor: default;
-p{
-  font-size: 8rem;
-  background: #FFE226;
-  background: linear-gradient(to bottom, #FFE226 32%, #FF9A03 50%, #CF2525 68%);
+  font-size: 120px;
+  margin: 10% 0;
+  background: #0dd7ff;
+  background: -webkit-linear-gradient(
+    to left,
+    #0dd7ff 0%,
+    #ffee00 50%,
+    #ff8800 100%
+  );
+  background: -moz-linear-gradient(
+    to left,
+    #0dd7ff 0%,
+    #ffee00 50%,
+    #ff8800 100%
+  );
+  background: linear-gradient(to left, #0dd7ff 0%, #ffee00 50%, #ff8800 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
+`;
+
+const StartButton = styled(motion.button)`
+  z-index: 10;
+  position: absolute;
+  cursor: default;
+  p {
+    font-size: 8rem;
+    background: #ffe226;
+    background: linear-gradient(
+      to bottom,
+      #ffe226 32%,
+      #ff9a03 50%,
+      #cf2525 68%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
   span {
     font-size: 8rem;
-    background: #CFCFCF;
-    background: linear-gradient(to bottom, #CFCFCF 50%, #0008FF 50%, #CF0068 100%);
+    background: #cfcfcf;
+    background: linear-gradient(
+      to bottom,
+      #cfcfcf 50%,
+      #0008ff 50%,
+      #cf0068 100%
+    );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -88,13 +108,11 @@ const textVariants = {
 };
 
 function Main() {
-
   return (
     <Wrapper>
       <BackgroundLayer1 src={BackgroundImg1} alt="Background layer 1" />
       <BackgroundLayer2 src={BackgroundImg2} alt="Background layer 2" />
       <BackgroundLayer3 src={BackgroundImg3} alt="Background layer 3" />
-
 
       <StartButton>
         <Title>PSH PORTFOLIO</Title>
@@ -106,18 +124,22 @@ function Main() {
         >
           FrontEndDeveloper
         </motion.p>
-        
+
         <motion.span
           variants={textVariants}
           initial="hidden"
           animate="visible"
-          transition={{ duration: 0.8, repeat: Infinity, repeatType: "reverse" }}
+          transition={{
+            duration: 0.8,
+            repeat: Infinity,
+            repeatType: "reverse",
+          }}
         >
           START SCROLL
         </motion.span>
       </StartButton>
     </Wrapper>
   );
-};
+}
 
 export default Main;
