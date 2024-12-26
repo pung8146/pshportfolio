@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import styled, { keyframes } from "styled-components";
-import { device } from "../style/mediaQueries";
 // // img
 import BackgroundImg1 from "../assets/images/Background/OakWood/background_layer_1.png";
 import BackgroundImg2 from "../assets/images/Background/OakWood/background_layer_2.png";
@@ -110,7 +109,7 @@ const textVariants = {
 function Main() {
   return (
     <Wrapper>
-      <BackgroundLayer1 src={BackgroundImg1} alt="Background layer 1" />
+      {/* <BackgroundLayer1 src={BackgroundImg1} alt="Background layer 1" />
       <BackgroundLayer2 src={BackgroundImg2} alt="Background layer 2" />
       <BackgroundLayer3 src={BackgroundImg3} alt="Background layer 3" />
 
@@ -137,7 +136,7 @@ function Main() {
         >
           START SCROLL
         </motion.span>
-      </StartButton>
+      </StartButton> */}
     </Wrapper>
   );
 }
